@@ -1,0 +1,19 @@
+{
+  "name": "wpe_web_puntotre-de",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.2.2",
+    "turn.js": "^1.0.5"
+  }
+}
