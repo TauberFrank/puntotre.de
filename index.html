@@ -884,14 +884,24 @@
 <script>
 // ── Loader ─────────────────────────────────────
 const loaderText = document.getElementById('loader-text');
-// Einblenden nach kurzem Delay
 setTimeout(() => loaderText.classList.add('visible'), 200);
-// Nach 3s: Text ausblenden, dann Vorhang
-setTimeout(() => {
+
+let _imgReady = false, _timerReady = false;
+function _openCurtain() {
+  if (!_imgReady || !_timerReady) return;
   loaderText.classList.remove('visible');
   loaderText.classList.add('hide');
   setTimeout(() => document.getElementById('loader').classList.add('out'), 400);
-}, 3000);
+}
+// Erstes Hero-Bild vorladen — Vorhang öffnet erst wenn geladen
+const _hero = new Image();
+_hero.onload = _hero.onerror = () => { _imgReady = true; _openCurtain(); };
+_hero.src = 'assets/kombis/kombis_vertigoevo-05_main-3.webp';
+// Mindestens 3s warten
+setTimeout(() => { _timerReady = true; _openCurtain(); }, 3000);
+// Übrige Hero-Bilder still vorladen
+['kombis_alto-07_main-2.webp','kombis_reverso-14_main.webp','kombis_art-05_main.webp','kombis_accademia-34_main.webp']
+  .forEach(f => { const i = new Image(); i.src = 'assets/kombis/' + f; });
 
 // ── Custom Cursor ───────────────────────────────
 const cursor = document.getElementById('cursor');
