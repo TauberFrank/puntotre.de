@@ -56,7 +56,7 @@
     @media (hover: none) { #cursor { display: none; } body { cursor: auto; } }
 
     /* ── Hero slideshow + Ken Burns ── */
-    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 2.4s cubic-bezier(0.4,0,0.2,1); will-change: transform, opacity; backface-visibility: hidden; transform: translateZ(0); }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 3s cubic-bezier(0.4,0,0.2,1); will-change: transform, opacity; backface-visibility: hidden; transform: translateZ(0); }
     .hero-slide.active { opacity: 1; }
     @keyframes kb1 { 0% { transform: translateZ(0) scale(1.04) translate(0.5%,0.5%); }   100% { transform: translateZ(0) scale(1.0) translate(0%,0%); } }
     @keyframes kb2 { 0% { transform: translateZ(0) scale(1.0) translate(0%,0%); }         100% { transform: translateZ(0) scale(1.04) translate(-0.6%,0.5%); } }
@@ -181,9 +181,6 @@
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 100%);pointer-events:none;z-index:1"></div>
   <!-- Verlauf unten -->
   <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" style="z-index:1"></div>
-  <!-- Letterbox oben und unten -->
-  <div style="position:absolute;top:0;left:0;right:0;height:3.5vh;background:#000;z-index:2;pointer-events:none"></div>
-  <div style="position:absolute;bottom:0;left:0;right:0;height:3.5vh;background:#000;z-index:2;pointer-events:none"></div>
 
   <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-14 pb-16" style="z-index:3">
     <p class="hero-text-label text-white/45 text-xs tracking-[0.22em] uppercase mb-4">Made in Italy</p>
@@ -947,7 +944,11 @@ const slides = document.querySelectorAll('.hero-slide');
 const dots   = document.querySelectorAll('.hero-dot');
 let cur = 0;
 function goTo(n) {
-  slides[cur].classList.remove('active');
+  const prev = slides[cur];
+  // Transform einfrieren bevor active entfernt wird — verhindert Snap-zurück
+  prev.style.transform = getComputedStyle(prev).transform;
+  prev.classList.remove('active');
+  setTimeout(() => { prev.style.transform = ''; }, 3200);
   dots[cur].style.width = '8px'; dots[cur].style.opacity = '0.35';
   cur = n;
   slides[cur].classList.add('active');
