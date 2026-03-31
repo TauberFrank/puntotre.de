@@ -33,13 +33,14 @@
     #lightbox.open { display: flex; }
     #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
 
-    /* Flipbook modal */
-    #flipModal { display: none; position: fixed; inset: 0; background: #0A0A0A; z-index: 998; flex-direction: column; align-items: center; justify-content: center; }
-    #flipModal.open { display: flex; }
-    #flipContainer { position: relative; }
-    .flip-page { background: #fff; }
-    .flip-page img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .flip-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    /* Katalog-Viewer */
+    #katModal { display: none; position: fixed; inset: 0; background: #0A0A0A; z-index: 998; flex-direction: column; }
+    #katModal.open { display: flex; }
+    #katImg { max-width: 100%; max-height: 100%; object-fit: contain; display: block; user-select: none; }
+    .kat-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); font-size: 2rem; width: 56px; height: 80px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+    .kat-arrow:hover { background: rgba(255,255,255,0.12); color: white; }
+    #katPrev { left: 0; border-radius: 0 4px 4px 0; }
+    #katNext { right: 0; border-radius: 4px 0 0 4px; }
 
     /* Mobile: Gallery tall item nicht mehr spannen */
     @media (max-width: 767px) {
@@ -540,46 +541,35 @@
 
 
 <!-- ══════════════════════════════════════════════
-     FLIPBOOK MODAL
+     KATALOG-VIEWER
 ══════════════════════════════════════════════ -->
-<div id="flipModal">
+<div id="katModal">
 
   <!-- Top bar -->
-  <div class="w-full flex items-center justify-between px-6 py-4 flex-shrink-0">
+  <div class="flex items-center justify-between px-5 py-3 flex-shrink-0">
     <div class="flex items-center gap-4">
-      <svg width="18" height="18" viewBox="0 0 28 28" fill="none">
-        <path d="M14 1L1 14L14 27L27 14L14 1Z" stroke="white" stroke-width="1" fill="none"/>
-        <path d="M10 14H18M14 10V18" stroke="white" stroke-width="1"/>
-      </svg>
-      <span id="flipTitle" style="font-family:'Playfair Display',serif"
+      <span id="katTitle" style="font-family:'Playfair Display',serif"
             class="text-white/70 text-sm tracking-[0.1em]"></span>
     </div>
     <div class="flex items-center gap-6">
-      <span id="flipPageNum" class="text-white/35 text-xs tracking-[0.1em]"></span>
-      <a id="flipDownload" href="#" download
+      <span id="katPageNum" class="text-white/40 text-xs tracking-[0.1em] tabular-nums"></span>
+      <a id="katDownload" href="#" download
          class="text-white/35 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">PDF ↓</a>
-      <button onclick="closeFlipbook()"
-              class="text-white/50 hover:text-white text-3xl font-light leading-none w-8 h-8 flex items-center justify-center">&times;</button>
+      <button onclick="closeKatalog()"
+              class="text-white/50 hover:text-white text-3xl font-light leading-none w-10 h-10 flex items-center justify-center">&times;</button>
     </div>
   </div>
 
-  <!-- Flipbook container -->
-  <div class="flex-1 flex items-center justify-center w-full overflow-hidden px-4 pb-4" id="flipWrapper">
-    <div id="flipContainer" class="relative">
-      <div class="flip-loading" id="flipLoading">Lade Katalog …</div>
-    </div>
+  <!-- Bild -->
+  <div class="flex-1 flex items-center justify-center overflow-hidden relative px-14">
+    <img id="katImg" src="" alt="">
+    <button class="kat-arrow" id="katPrev" onclick="katGo(-1)">&#8249;</button>
+    <button class="kat-arrow" id="katNext" onclick="katGo(+1)">&#8250;</button>
   </div>
 
-  <!-- Bottom nav -->
-  <div class="w-full flex items-center justify-center gap-8 py-5 flex-shrink-0">
-    <button onclick="flipPrev()"
-            class="text-white/50 hover:text-white text-sm tracking-[0.12em] uppercase transition-colors px-4 py-2">
-      ← Zurück
-    </button>
-    <button onclick="flipNext()"
-            class="text-white/50 hover:text-white text-sm tracking-[0.12em] uppercase transition-colors px-4 py-2">
-      Weiter →
-    </button>
+  <!-- Fortschrittsbalken -->
+  <div class="w-full h-[2px] bg-white/10 flex-shrink-0">
+    <div id="katProgress" class="h-full bg-[#B8976A] transition-all duration-200" style="width:0%"></div>
   </div>
 </div>
 
@@ -587,7 +577,6 @@
 <!-- ══════════════════════════════════════════════
      SCRIPTS
 ══════════════════════════════════════════════ -->
-<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 <script>
 // ── Header scroll ──────────────────────────────
 const header = document.getElementById('header');
@@ -630,113 +619,59 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeFlipbook(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeKatalog(); } });
 
-// ── Flipbook ───────────────────────────────────
-let pageFlip = null;
-let currentCatalog = null;
-
+// ── Katalog-Viewer ─────────────────────────────
 const catalogs = {
-  deluxe: {
-    title: 'Individual DeLuxe — 2025',
-    pages: 59,
-    pdf: 'assets/katpl/DeLuxe - Kat - 2025 - Puntotre Waschplatz-Experten.pdf',
-    dir: 'assets/katalog-pages/deluxe'
-  },
-  individual6: {
-    title: 'Individual 6 — 2025',
-    pages: 101,
-    pdf: 'assets/katpl/Individual6 - Kat - 2025 - Puntotre Waschplatz-Experten.pdf',
-    dir: 'assets/katalog-pages/individual6'
-  }
+  deluxe:      { title: 'Individual DeLuxe — 2025', pages: 59,  pdf: 'assets/katpl/DeLuxe - Kat - 2025 - Puntotre Waschplatz-Experten.pdf',     dir: 'assets/katalog-pages/deluxe' },
+  individual6: { title: 'Individual 6 — 2025',      pages: 101, pdf: 'assets/katpl/Individual6 - Kat - 2025 - Puntotre Waschplatz-Experten.pdf', dir: 'assets/katalog-pages/individual6' }
 };
+let katCur = 1, katCat = null;
 
-async function openFlipbook(key, pageCount) {
-  const cat = catalogs[key];
-  if (!cat) return;
-  currentCatalog = key;
-
-  document.getElementById('flipModal').classList.add('open');
+function openFlipbook(key) {
+  katCat = catalogs[key];
+  if (!katCat) return;
+  katCur = 1;
+  document.getElementById('katTitle').textContent    = katCat.title;
+  document.getElementById('katDownload').href        = katCat.pdf;
+  document.getElementById('katModal').classList.add('open');
   document.body.style.overflow = 'hidden';
-  document.getElementById('flipTitle').textContent = cat.title;
-  document.getElementById('flipDownload').href = cat.pdf;
-
-  // Destroy existing
-  if (pageFlip) { try { pageFlip.destroy(); } catch(e){} pageFlip = null; }
-
-  // Calculate dimensions
-  const wrapper  = document.getElementById('flipWrapper');
-  const isMobile = window.innerWidth < 768;
-  const maxH     = wrapper.clientHeight - 20;
-  const maxW     = wrapper.clientWidth  - 20;
-  const ratio    = 842 / 595; // A4
-  let pageW, pageH;
-  if (isMobile) {
-    pageH = Math.min(maxH, maxW * ratio);
-    pageW = pageH / ratio;
-    if (pageW > maxW) { pageW = maxW; pageH = pageW * ratio; }
-  } else {
-    pageH = Math.min(maxH, (maxW / 2) * ratio);
-    pageW = pageH / ratio;
-    if (pageW * 2 > maxW) { pageW = maxW / 2; pageH = pageW * ratio; }
-  }
-  pageW = Math.floor(pageW); pageH = Math.floor(pageH);
-
-  const container = document.getElementById('flipContainer');
-  container.style.width  = (isMobile ? pageW : pageW * 2) + 'px';
-  container.style.height = pageH + 'px';
-  document.getElementById('flipLoading').style.display = 'flex';
-
-  // Build page image list — prefer webp, fall back to png
-  const ext = await fetch(`${cat.dir}/page_001.webp`, {method:'HEAD'})
-    .then(r => r.ok ? '.webp' : '.png').catch(() => '.png');
-  const pages = Array.from({ length: cat.pages }, (_, i) =>
-    `${cat.dir}/page_${String(i+1).padStart(3,'0')}${ext}`
-  );
-
-  pageFlip = new St.PageFlip(container, {
-    width: pageW,
-    height: pageH,
-    showCover: true,
-    mobileScrollSupport: false,
-    usePortrait: isMobile,
-    autoSize: false,
-    maxShadowOpacity: 0.4,
-    flippingTime: 700,
-  });
-
-  pageFlip.loadFromImages(pages);
-
-  pageFlip.on('init', () => {
-    document.getElementById('flipLoading').style.display = 'none';
-    updatePageNum();
-  });
-  pageFlip.on('flip', updatePageNum);
+  katRender();
 }
 
-function updatePageNum() {
-  if (!pageFlip || !currentCatalog) return;
-  const total = catalogs[currentCatalog].pages;
-  const cur   = pageFlip.getCurrentPageIndex() + 1;
-  document.getElementById('flipPageNum').textContent = `${cur} / ${total}`;
+function katRender() {
+  const src = `${katCat.dir}/page_${String(katCur).padStart(3,'0')}.webp`;
+  document.getElementById('katImg').src              = src;
+  document.getElementById('katPageNum').textContent  = `${katCur} / ${katCat.pages}`;
+  document.getElementById('katProgress').style.width = (katCur / katCat.pages * 100) + '%';
+  // Preload next
+  if (katCur < katCat.pages) new Image().src = `${katCat.dir}/page_${String(katCur+1).padStart(3,'0')}.webp`;
 }
 
-function flipPrev() { if (pageFlip) pageFlip.flipPrev(); }
-function flipNext() { if (pageFlip) pageFlip.flipNext(); }
+function katGo(dir) {
+  const next = katCur + dir;
+  if (next < 1 || next > katCat.pages) return;
+  katCur = next;
+  katRender();
+}
 
-function closeFlipbook() {
-  document.getElementById('flipModal').classList.remove('open');
+function closeKatalog() {
+  document.getElementById('katModal').classList.remove('open');
   document.body.style.overflow = '';
-  if (pageFlip) { try { pageFlip.destroy(); } catch(e){} pageFlip = null; }
-  document.getElementById('flipLoading').style.display = 'flex';
 }
 
-// Keyboard navigation in flipbook
+// Keyboard + Swipe
 document.addEventListener('keydown', e => {
-  if (!document.getElementById('flipModal').classList.contains('open')) return;
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  flipNext();
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    flipPrev();
+  if (!document.getElementById('katModal').classList.contains('open')) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') katGo(+1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   katGo(-1);
 });
+let tsX = 0;
+document.getElementById('katModal')?.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, {passive:true});
+document.getElementById('katModal')?.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tsX;
+  if (Math.abs(dx) > 40) katGo(dx < 0 ? +1 : -1);
+}, {passive:true});
 </script>
 </body>
 </html>
