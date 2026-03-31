@@ -6,6 +6,20 @@
   <title>Puntotre — Italienische Badmöbel | Waschplatz-Experten</title>
   <meta name="description" content="Puntotre — exklusive Badmöbel aus Italien. Handwerkliche Perfektion, zeitlose Ästhetik. Made in Italy. Präsentiert von Waschplatz-Experten.">
   <meta name="author" content="Waschplatz-Experten, Frank Tauber">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://puntotre.de/">
+  <meta property="og:title"       content="Puntotre — Italienische Badmöbel">
+  <meta property="og:description" content="Exklusive Badmöbel aus Norditalien. Norditalienische Formensprache, vollendete Materialien — präsentiert von Waschplatz-Experten.">
+  <meta property="og:image"       content="https://puntotre.de/assets/kombis/kombis_reverso-09_main.webp">
+  <meta name="twitter:card"       content="summary_large_image">
+
+  <!-- Preload hero images -->
+  <link rel="preload" as="image" href="assets/kombis/kombis_vertigoevo-05_main-3.webp">
+  <link rel="preload" as="image" href="assets/kombis/kombis_alto-07_main-2.webp">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -101,9 +115,20 @@
      HEADER
 ══════════════════════════════════════════════ -->
 <header id="header" class="fixed top-0 left-0 right-0 z-50 px-8 md:px-14 py-6 flex items-center justify-between transition-all duration-500">
-  <a href="#" class="flex items-center">
+  <a href="#">
     <span style="font-family:'Playfair Display',serif" class="text-white text-xl tracking-[0.15em] font-light">PUNTOTRE</span>
   </a>
+
+  <!-- Series nav — desktop only -->
+  <nav class="hidden xl:flex items-center gap-7">
+    <a href="reverso.html" class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Reverso</a>
+    <a href="vertigo.html" class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Vertigo</a>
+    <a href="art.html"     class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Art</a>
+    <a href="alto.html"    class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Alto</a>
+    <a href="young.html"   class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Young</a>
+    <a href="ola.html"     class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Ola</a>
+  </nav>
+
   <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
      class="text-white/60 hover:text-white text-xs tracking-[0.12em] uppercase transition-colors duration-300 hidden md:block">
     Waschplatz-Experten ↗
@@ -623,6 +648,63 @@
   </div>
 </footer>
 
+
+<!-- WhatsApp -->
+<a href="https://wa.me/4971411421690" target="_blank" rel="noopener" title="WhatsApp — Waschplatz-Experten"
+   style="position:fixed;bottom:1.75rem;right:1.75rem;z-index:9990;width:52px;height:52px;background:#B8976A;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(184,151,106,0.45);transition:transform 0.2s ease,box-shadow 0.2s ease"
+   onmouseenter="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 32px rgba(184,151,106,0.6)'"
+   onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 24px rgba(184,151,106,0.45)'">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://puntotre.de/#website",
+      "url": "https://puntotre.de/",
+      "name": "Puntotre — Italienische Badmöbel",
+      "description": "Exklusive Badmöbel aus Norditalien, präsentiert von Waschplatz-Experten",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://puntotre.de/#business",
+      "name": "Waschplatz-Experten",
+      "description": "Exklusiver Händler von Puntotre Badmöbeln für Deutschland, Österreich und die Schweiz",
+      "url": "https://www.waschplatz-experten.com",
+      "telephone": "+4971411421690",
+      "email": "service@waschplatz-experten.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Eutinger Straße 68",
+        "addressLocality": "Niefern",
+        "postalCode": "75223",
+        "addressCountry": "DE"
+      },
+      "areaServed": ["DE", "AT", "CH"],
+      "priceRange": "€€€",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Puntotre Badmöbel-Kollektionen",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "REVERSO"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "VERTIGO"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "ART"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "ALTO"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "YOUNG"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "OLA"}}
+        ]
+      }
+    }
+  ]
+}
+</script>
 
 <!-- ══════════════════════════════════════════════
      LIGHTBOX
