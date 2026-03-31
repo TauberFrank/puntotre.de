@@ -47,7 +47,7 @@
       animation: loaderIn 1s cubic-bezier(0.16,1,0.3,1) 0.3s both;
       transition: opacity 0.4s;
     }
-    #loader.out #loader-text { opacity: 0; }
+    #loader.out #loader-text { opacity: 0; transition: opacity 0.15s; }
     @keyframes loaderIn {
       from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
       to   { opacity: 1; transform: translate(-50%, -50%); }
