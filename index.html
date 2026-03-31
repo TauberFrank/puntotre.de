@@ -881,9 +881,12 @@
 ══════════════════════════════════════════════ -->
 <script>
 // ── Loader ─────────────────────────────────────
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('out'), 3000);
-});
+setTimeout(() => {
+  const lt = document.getElementById('loader-text');
+  lt.style.transition = 'opacity 0.4s ease';
+  lt.style.opacity = '0';
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 450);
+}, 3000);
 
 // ── Custom Cursor ───────────────────────────────
 const cursor = document.getElementById('cursor');
