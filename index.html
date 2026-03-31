@@ -23,11 +23,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/output.css">
   <style>
     /* ── Base ── */
-    body { font-family: 'Inter', sans-serif; background: #FAF9F7; color: #0F0F0F; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; cursor: none; }
+    body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.75; background: #FAF9F7; color: #0F0F0F; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; cursor: none; }
     h1,h2,h3 { font-feature-settings: "kern" 1, "liga" 1; }
     ::selection { background: #B8976A; color: #fff; }
 
@@ -93,7 +93,7 @@
     #katNext { right: 0; border-radius: 4px 0 0 4px; }
 
     /* ── Header WPE link ── */
-    @media (min-width: 768px) { #wpe-header-link { display: flex; } }
+    #wpe-header-link{display:none} @media (min-width: 768px) { #wpe-header-link { display: flex; } }
     #wpe-header-link:hover span:first-child { color: rgba(255,255,255,0.6) !important; }
     #wpe-header-link:hover span:last-child  { color: rgba(255,255,255,1)   !important; }
 
@@ -141,7 +141,7 @@
   </nav>
 
   <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" id="wpe-header-link"
-     style="flex-direction:column;align-items:flex-end;line-height:1;text-decoration:none;display:none">
+     style="flex-direction:column;align-items:flex-end;line-height:1;text-decoration:none">
     <span style="color:rgba(255,255,255,0.35);font-size:8px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:3px;transition:color 0.3s">Powered by</span>
     <span style="color:rgba(255,255,255,0.7);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s">Waschplatz-Experten<svg style="display:inline-block;vertical-align:middle;margin-left:5px;margin-bottom:1px" width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 7.5L7.5 1.5"/><path d="M3 1.5h4.5v4.5"/></svg></span>
   </a>
