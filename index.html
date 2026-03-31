@@ -18,8 +18,8 @@
   <meta name="twitter:card"       content="summary_large_image">
 
   <!-- Preload hero images -->
-  <link rel="preload" as="image" href="assets/kombis/kombis_vertigoevo-05_main-3.webp">
   <link rel="preload" as="image" href="assets/kombis/kombis_alto-07_main-2.webp">
+  <link rel="preload" as="image" href="assets/kombis/kombis_vertigoevo-05_main-3.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,8 +168,8 @@
      1. HERO — Fullscreen Slideshow
 ══════════════════════════════════════════════ -->
 <section class="relative h-screen min-h-[600px] overflow-hidden bg-[#0F0F0F]">
-  <div class="hero-slide active" style="background-image:url('assets/kombis/kombis_vertigoevo-05_main-3.webp')"></div>
-  <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_alto-07_main-2.webp')"></div>
+  <div class="hero-slide active" style="background-image:url('assets/kombis/kombis_alto-07_main-2.webp')"></div>
+  <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_vertigoevo-05_main-3.webp')"></div>
   <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_reverso-14_main.webp')"></div>
   <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_art-05_main.webp')"></div>
   <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_accademia-34_main.webp')"></div>
@@ -896,7 +896,7 @@ function _openCurtain() {
 // Erstes Hero-Bild vorladen — Vorhang öffnet erst wenn geladen
 const _hero = new Image();
 _hero.onload = _hero.onerror = () => { _imgReady = true; _openCurtain(); };
-_hero.src = 'assets/kombis/kombis_vertigoevo-05_main-3.webp';
+_hero.src = 'assets/kombis/kombis_alto-07_main-2.webp';
 // Mindestens 3s warten
 setTimeout(() => { _timerReady = true; _openCurtain(); }, 3000);
 // Übrige Hero-Bilder still vorladen
