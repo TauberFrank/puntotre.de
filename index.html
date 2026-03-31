@@ -61,11 +61,15 @@
     @keyframes kb1 { 0% { transform: translateZ(0) scale(1.04) translate(0.5%,0.5%); }   100% { transform: translateZ(0) scale(1.0) translate(0%,0%); } }
     @keyframes kb2 { 0% { transform: translateZ(0) scale(1.0) translate(0%,0%); }         100% { transform: translateZ(0) scale(1.04) translate(-0.6%,0.5%); } }
     @keyframes kb3 { 0% { transform: translateZ(0) scale(1.03) translate(-0.5%,0.3%); }   100% { transform: translateZ(0) scale(1.0) translate(0.5%,-0.3%); } }
-    .hero-slide.active:nth-child(1) { animation: kb1 9s ease-in-out forwards; }
-    .hero-slide.active:nth-child(2) { animation: kb2 9s ease-in-out forwards; }
-    .hero-slide.active:nth-child(3) { animation: kb3 9s ease-in-out forwards; }
-    .hero-slide.active:nth-child(4) { animation: kb1 9s ease-in-out forwards; }
-    .hero-slide.active:nth-child(5) { animation: kb2 9s ease-in-out forwards; }
+    .hero-slide.active:nth-child(1) { animation: kb1 13s ease-in-out forwards; }
+    .hero-slide.active:nth-child(2) { animation: kb2 13s ease-in-out forwards; }
+    .hero-slide.active:nth-child(3) { animation: kb3 13s ease-in-out forwards; }
+    .hero-slide.active:nth-child(4) { animation: kb1 13s ease-in-out forwards; }
+    .hero-slide.active:nth-child(5) { animation: kb2 13s ease-in-out forwards; }
+    /* Cinematic text entrance */
+    @keyframes heroIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .hero-text-label { opacity:0; animation: heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 5.6s forwards; }
+    .hero-text-h1    { opacity:0; animation: heroIn 1.4s cubic-bezier(0.16,1,0.3,1) 5.9s forwards; }
 
     /* ── Scroll indicator ── */
     @keyframes scroll-drop { 0% { transform: translateY(-100%); opacity:0; } 25% { opacity:1; } 75% { opacity:1; } 100% { transform: translateY(200%); opacity:0; } }
@@ -173,11 +177,17 @@
   <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_reverso-14_main.webp')"></div>
   <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_art-05_main.webp')"></div>
   <div class="hero-slide"      style="background-image:url('assets/kombis/kombis_accademia-34_main.webp')"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent"></div>
+  <!-- Vignette: Ecken + Seiten abdunkeln -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 100%);pointer-events:none;z-index:1"></div>
+  <!-- Verlauf unten -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" style="z-index:1"></div>
+  <!-- Letterbox oben und unten -->
+  <div style="position:absolute;top:0;left:0;right:0;height:3.5vh;background:#000;z-index:2;pointer-events:none"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:3.5vh;background:#000;z-index:2;pointer-events:none"></div>
 
-  <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-14 pb-16">
-    <p class="text-white/45 text-xs tracking-[0.22em] uppercase mb-4">Made in Italy</p>
-    <h1 style="font-family:'Playfair Display',serif" class="text-white font-light leading-[1.05] text-[clamp(3rem,7vw,7.5rem)]">
+  <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-14 pb-16" style="z-index:3">
+    <p class="hero-text-label text-white/45 text-xs tracking-[0.22em] uppercase mb-4">Made in Italy</p>
+    <h1 class="hero-text-h1 text-white font-light leading-[1.05] text-[clamp(3rem,7vw,7.5rem)]" style="font-family:'Playfair Display',serif">
       Schönheit,<br><em>die bleibt.</em>
     </h1>
   </div>
