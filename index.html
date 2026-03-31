@@ -41,12 +41,17 @@
     #loader-r { right: 0; }
     #loader.out #loader-l { transform: translateX(-100%); }
     #loader.out #loader-r { transform: translateX(100%); }
-    .loader-dots { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; gap: 10px; z-index: 1; transition: opacity 0.3s; }
-    #loader.out .loader-dots { opacity: 0; }
-    .loader-dots span { width: 6px; height: 6px; border-radius: 50%; background: #B8976A; animation: ldot 1.2s ease-in-out infinite; }
-    .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes ldot { 0%,80%,100% { opacity: 0.2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+    #loader-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      z-index: 1; text-align: center; pointer-events: none;
+      animation: loaderIn 1s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+      transition: opacity 0.4s;
+    }
+    #loader.out #loader-text { opacity: 0; }
+    @keyframes loaderIn {
+      from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
 
     /* ── Custom Cursor ── */
     #cursor { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: #B8976A; border-radius: 50%; pointer-events: none; z-index: 99998; will-change: transform; transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.3s ease; }
@@ -122,7 +127,10 @@
 <div id="loader">
   <div id="loader-l"></div>
   <div id="loader-r"></div>
-  <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div id="loader-text">
+    <p style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.9);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;font-style:italic;letter-spacing:0.04em">Prego.</p>
+    <p style="color:rgba(255,255,255,0.3);font-size:clamp(0.65rem,1.2vw,0.78rem);letter-spacing:0.28em;text-transform:uppercase;margin-top:1.2rem">Waschplätze der Spitzenklasse.</p>
+  </div>
 </div>
 <!-- Custom Cursor -->
 <div id="cursor"></div>
@@ -874,7 +882,7 @@
 <script>
 // ── Loader ─────────────────────────────────────
 window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('out'), 300);
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 3000);
 });
 
 // ── Custom Cursor ───────────────────────────────
