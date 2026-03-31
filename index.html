@@ -56,7 +56,7 @@
     @media (hover: none) { #cursor { display: none; } body { cursor: auto; } }
 
     /* ── Hero slideshow + Ken Burns ── */
-    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.4s ease; will-change: transform, opacity; }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 2.4s cubic-bezier(0.4,0,0.2,1); will-change: transform, opacity; }
     .hero-slide.active { opacity: 1; }
     @keyframes kb1 { 0% { transform: scale(1.06) translate(0.8%,0.8%); }   100% { transform: scale(1.0) translate(0%,0%); } }
     @keyframes kb2 { 0% { transform: scale(1.0) translate(0%,0%); }         100% { transform: scale(1.06) translate(-1%,0.8%); } }
