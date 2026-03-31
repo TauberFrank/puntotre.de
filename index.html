@@ -14,9 +14,17 @@
     body { font-family: 'Inter', sans-serif; background: #FAF9F7; color: #0F0F0F; -webkit-font-smoothing: antialiased; }
     .font-serif { font-family: 'Playfair Display', serif; }
 
-    /* Hero slideshow */
+    /* Hero slideshow + Ken Burns */
     .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.4s ease; }
     .hero-slide.active { opacity: 1; }
+
+    @keyframes kb1 { 0% { transform: scale(1.08) translate(1%,  1%); } 100% { transform: scale(1.0)  translate(0%,  0%); } }
+    @keyframes kb2 { 0% { transform: scale(1.0)  translate(0%,  0%); } 100% { transform: scale(1.08) translate(-1.5%, 1%); } }
+    @keyframes kb3 { 0% { transform: scale(1.06) translate(-1%, 0.5%); } 100% { transform: scale(1.0)  translate(1%,  -0.5%); } }
+
+    .hero-slide.active:nth-child(1) { animation: kb1 8s ease-in-out forwards; }
+    .hero-slide.active:nth-child(2) { animation: kb2 8s ease-in-out forwards; }
+    .hero-slide.active:nth-child(3) { animation: kb3 8s ease-in-out forwards; }
 
     /* Scroll reveal — nur Opacity, kein Transform (verhindert Zucken) */
     .reveal { opacity: 0; transition: opacity 0.8s ease; }
