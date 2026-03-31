@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OLA — Puntotre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/output.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAF9F7; color: #0F0F0F; -webkit-font-smoothing: antialiased; cursor: none; }
+    ::selection { background: #B8976A; color: #fff; }
+    #cursor { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: #B8976A; border-radius: 50%; pointer-events: none; z-index: 99998; will-change: transform; transition: width .25s ease, height .25s ease, background .25s ease, opacity .3s ease; }
+    #cursor.hover { width: 36px; height: 36px; background: transparent; border: 1px solid rgba(184,151,106,0.6); }
+    #cursor.hidden { opacity: 0; }
+    @media (hover: none) { #cursor { display: none; } body { cursor: auto; } }
+    .reveal { opacity: 0; transition: opacity 0.9s ease; }
+    .reveal.visible { opacity: 1; }
+    .gal { columns: 2; gap: 3px; }
+    @media (min-width: 768px) { .gal { columns: 3; } }
+    .gal-item { break-inside: avoid; margin-bottom: 3px; overflow: hidden; cursor: zoom-in; display: block; }
+    .gal-item img { width: 100%; display: block; transition: transform 0.7s ease; }
+    .gal-item:hover img { transform: scale(1.04); }
+    .snav-card { position: relative; overflow: hidden; aspect-ratio: 4/3; display: block; }
+    .snav-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+    .snav-card:hover img { transform: scale(1.06); }
+    .snav-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%); }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 9999; align-items: center; justify-content: center; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<div id="cursor"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 px-6 md:px-14 py-5 md:py-6 flex items-center justify-between" style="background:rgba(15,15,15,0.88);backdrop-filter:blur(20px)">
+  <a href="index.html">
+    <span style="font-family:'Playfair Display',serif" class="text-white text-xl tracking-[0.15em] font-light">PUNTOTRE</span>
+  </a>
+  <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+</header>
+
+<!-- Hero -->
+<section class="relative h-screen overflow-hidden bg-[#0F0F0F]">
+  <img src="assets/kombis/kombis_ola-nw213b_main.webp" alt="OLA Kollektion" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);"></div>
+  <div class="absolute bottom-0 left-0 pb-16 px-8 md:px-14">
+    <span class="block text-xs tracking-[0.25em] uppercase mb-4" style="color:#B8976A;">Kollektion</span>
+    <h1 class="text-white font-light leading-none" style="font-family:'Playfair Display',serif; font-size:clamp(4rem,9vw,9rem);">OLA</h1>
+    <p class="mt-4 text-white/70 text-xl md:text-2xl font-light" style="font-family:'Playfair Display',serif; font-style:italic;">Come l'acqua che trova la sua forma.</p>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="bg-[#FAF9F7] py-28 md:py-40 px-8 md:px-14">
+  <div class="max-w-3xl mx-auto text-center">
+    <blockquote class="text-[#0F0F0F] leading-relaxed" style="font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.5rem,3vw,2.4rem);">
+      „La natura ispira, noi creiamo —<br>
+      linee che fluiscono<br>
+      come l'acqua sulla pietra."
+    </blockquote>
+    <hr style="width:40px; height:1px; background:#B8976A; border:none; margin:2.5rem auto 0;">
+    <p class="text-[#6B6B6B] font-light text-base mt-6">Die Natur inspiriert, wir gestalten — Linien, die fließen wie Wasser über Stein.</p>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="bg-[#0F0F0F] px-4 md:px-8 py-4">
+  <div class="gal reveal">
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_main.webp">
+      <img src="assets/kombis/thumb/kombis_ola-nw213b_main.webp" alt="OLA" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_detail.webp">
+      <img src="assets/kombis/kombis_ola-nw213b_detail.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_detail-2.webp">
+      <img src="assets/kombis/kombis_ola-nw213b_detail-2.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_detail-3.webp">
+      <img src="assets/kombis/kombis_ola-nw213b_detail-3.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-10c_main.webp">
+      <img src="assets/kombis/kombis_ola-10c_main.webp" alt="OLA" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-10c_detail.webp">
+      <img src="assets/kombis/kombis_ola-10c_detail.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-10c_detail-2.webp">
+      <img src="assets/kombis/kombis_ola-10c_detail-2.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-21-15_main.webp">
+      <img src="assets/kombis/kombis_ola-21-15_main.webp" alt="OLA" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-21-15_detail-1.webp">
+      <img src="assets/kombis/kombis_ola-21-15_detail-1.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-21-15_detail-2.webp">
+      <img src="assets/kombis/kombis_ola-21-15_detail-2.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-2116_main.webp">
+      <img src="assets/kombis/kombis_ola-2116_main.webp" alt="OLA" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-2116_detail.webp">
+      <img src="assets/kombis/kombis_ola-2116_detail.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-2116_detail-2.webp">
+      <img src="assets/kombis/kombis_ola-2116_detail-2.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw208_main.webp">
+      <img src="assets/kombis/kombis_ola-nw208_main.webp" alt="OLA" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw208_detail.webp">
+      <img src="assets/kombis/kombis_ola-nw208_detail.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-nw208_detail-2.webp">
+      <img src="assets/kombis/kombis_ola-nw208_detail-2.webp" alt="OLA Detail" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-p503b_main.webp">
+      <img src="assets/kombis/kombis_ola-p503b_main.webp" alt="OLA" loading="lazy">
+    </a>
+    <a class="gal-item" data-full="assets/kombis/kombis_ola-p503b_detail.webp">
+      <img src="assets/kombis/kombis_ola-p503b_detail.webp" alt="OLA Detail" loading="lazy">
+    </a>
+  </div>
+</section>
+
+<!-- Andere Kollektionen -->
+<section class="bg-[#FAF9F7] px-8 md:px-14 py-20">
+  <p class="text-xs tracking-[0.2em] uppercase text-[#6B6B6B] mb-8">Andere Kollektionen</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <a href="reverso.html" class="snav-card">
+      <img src="assets/kombis/thumb/kombis_reverso-09_main.webp" alt="REVERSO" loading="lazy">
+      <div class="snav-overlay"></div>
+      <div class="absolute bottom-0 left-0 p-6">
+        <span class="text-white text-xs tracking-[0.2em] uppercase">REVERSO</span>
+      </div>
+    </a>
+    <a href="vertigo.html" class="snav-card">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-05_main-3.webp" alt="VERTIGO" loading="lazy">
+      <div class="snav-overlay"></div>
+      <div class="absolute bottom-0 left-0 p-6">
+        <span class="text-white text-xs tracking-[0.2em] uppercase">VERTIGO</span>
+      </div>
+    </a>
+    <a href="young.html" class="snav-card">
+      <img src="assets/kombis/thumb/kombis_young-21-01_main.webp" alt="YOUNG" loading="lazy">
+      <div class="snav-overlay"></div>
+      <div class="absolute bottom-0 left-0 p-6">
+        <span class="text-white text-xs tracking-[0.2em] uppercase">YOUNG</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-[#0F0F0F] py-32 md:py-48 text-center px-8">
+  <h2 class="text-white font-light mb-10 leading-tight" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,3rem);">Entdecken Sie OLA bei<br>Waschplatz-Experten</h2>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
+     class="inline-block px-10 py-4 text-xs tracking-[0.2em] uppercase transition-all duration-300 text-[#B8976A] border border-[#B8976A] hover:bg-[#B8976A] hover:text-white">
+    Jetzt entdecken
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#080808] px-8 md:px-14 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+  <span style="font-family:'Playfair Display',serif" class="text-white/50 text-sm tracking-[0.12em]">PUNTOTRE</span>
+  <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs items-center">
+    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" class="text-white/35 hover:text-white/70 transition-colors">waschplatz-experten.com</a>
+    <a href="impressum.html" class="text-white/25 hover:text-white/70 transition-colors">Impressum</a>
+    <a href="datenschutz.html" class="text-white/25 hover:text-white/70 transition-colors">Datenschutz</a>
+    <span class="text-white/15">© 2025 Waschplatz-Experten</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <img id="lightboxImg" src="" alt="Vollbild">
+</div>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+});
+document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
+document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+document.querySelectorAll('a, button, .gal-item, .snav-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.05});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightboxImg');
+document.querySelectorAll('.gal-item').forEach(item => {
+  item.addEventListener('click', () => {
+    lbImg.src = item.dataset.full || item.querySelector('img').src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+lb.addEventListener('click', e => { if(e.target===lb) closeLightbox(); });
+</script>
+</body>
+</html>

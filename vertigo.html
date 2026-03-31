@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERTIGO — Puntotre</title>
+  <meta name="description" content="VERTIGO — Italienische Badmöbel von Puntotre. Leicht wie ein Traum, fest wie Stein. Präsentiert von Waschplatz-Experten.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/output.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FAF9F7; color: #0F0F0F; -webkit-font-smoothing: antialiased; cursor: none; }
+    ::selection { background: #B8976A; color: #fff; }
+    #cursor { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: #B8976A; border-radius: 50%; pointer-events: none; z-index: 99998; will-change: transform; transition: width .25s ease, height .25s ease, background .25s ease, opacity .3s ease; }
+    #cursor.hover { width: 36px; height: 36px; background: transparent; border: 1px solid rgba(184,151,106,0.6); }
+    #cursor.hidden { opacity: 0; }
+    @media (hover: none) { #cursor { display: none; } body { cursor: auto; } }
+    .reveal { opacity: 0; transition: opacity 0.9s ease; }
+    .reveal.visible { opacity: 1; }
+
+    /* Hero */
+    .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    @keyframes kb { 0% { transform: scale(1.06); } 100% { transform: scale(1.0); } }
+    .hero-bg { animation: kb 12s ease-out forwards; }
+
+    /* Masonry gallery */
+    .gal { columns: 2; gap: 3px; }
+    @media (min-width: 768px) { .gal { columns: 3; } }
+    .gal-item { break-inside: avoid; margin-bottom: 3px; overflow: hidden; cursor: zoom-in; display: block; }
+    .gal-item img { width: 100%; display: block; transition: transform 0.7s ease; }
+    .gal-item:hover img { transform: scale(1.04); }
+
+    /* Serie nav cards */
+    .snav-card { position: relative; overflow: hidden; aspect-ratio: 4/3; display: block; }
+    .snav-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+    .snav-card:hover img { transform: scale(1.06); }
+    .snav-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%); }
+
+    /* Lightbox */
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 9999; align-items: center; justify-content: center; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; }
+
+    /* Scroll indicator */
+    @keyframes scroll-drop { 0% { transform: translateY(-100%); opacity:0; } 25% { opacity:1; } 75% { opacity:1; } 100% { transform: translateY(200%); opacity:0; } }
+    .scroll-line-inner { animation: scroll-drop 2s ease-in-out infinite; }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<div id="cursor"></div>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 z-50 px-8 md:px-14 py-6 flex items-center justify-between" style="background:rgba(15,15,15,0.88);backdrop-filter:blur(20px)">
+  <a href="index.html">
+    <span style="font-family:'Playfair Display',serif" class="text-white text-xl tracking-[0.15em] font-light">PUNTOTRE</span>
+  </a>
+  <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+</header>
+
+<!-- Hero -->
+<section class="relative h-screen min-h-[600px] overflow-hidden">
+  <div class="hero-bg" style="background-image:url('assets/kombis/kombis_vertigoevo-05_main-3.webp')"></div>
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.55) 100%)"></div>
+
+  <!-- Hero text -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+    <p class="text-xs tracking-[0.35em] uppercase mb-5 font-light" style="color:#B8976A">Kollektion</p>
+    <h1 style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(4rem,12vw,9rem);letter-spacing:0.12em;line-height:1" class="mb-6">VERTIGO</h1>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.2vw,1.4rem);font-weight:300;opacity:0.85;letter-spacing:0.04em">Una sensazione che rimane.</p>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+    <div class="w-px h-12 overflow-hidden" style="background:rgba(255,255,255,0.12)">
+      <div class="scroll-line-inner w-full h-full" style="background:#B8976A"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Italian Quote -->
+<section class="py-28 px-6 text-center" style="background:#FAF9F7">
+  <div class="max-w-3xl mx-auto reveal">
+    <blockquote style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,3.5vw,2.6rem);font-weight:300;line-height:1.5;color:#1a1a1a;letter-spacing:0.01em">
+      "Leggero come un sogno,<br>
+      solido come la roccia —<br>
+      Vertigo ridefinisce la leggerezza."
+    </blockquote>
+    <p class="mt-8 text-sm font-light tracking-wide" style="color:#888;font-style:italic">
+      Leicht wie ein Traum, fest wie Stein — VERTIGO definiert Leichtigkeit neu.
+    </p>
+    <div class="mt-10 w-12 h-px mx-auto" style="background:#B8976A"></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section style="background:#0F0F0F" class="px-1 md:px-2 py-1">
+  <div class="gal">
+
+    <!-- 1 — confirmed thumb -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-01_main.webp">
+      <img src="assets/kombis/thumb/kombis_vertigo-01_main.webp" alt="VERTIGO Kollektion" loading="lazy">
+    </a>
+
+    <!-- 2 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-01_detail-1.webp">
+      <img src="assets/kombis/kombis_vertigo-01_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 3 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-01_detail-2.webp">
+      <img src="assets/kombis/kombis_vertigo-01_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 4 — confirmed thumb -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-02_main.webp">
+      <img src="assets/kombis/thumb/kombis_vertigo-02_main.webp" alt="VERTIGO Kollektion" loading="lazy">
+    </a>
+
+    <!-- 5 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-02_detail-1.webp">
+      <img src="assets/kombis/kombis_vertigo-02_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 6 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-02_detail-2.webp">
+      <img src="assets/kombis/kombis_vertigo-02_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 7 — confirmed thumb -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_main.webp">
+      <img src="assets/kombis/thumb/kombis_vertigo-06_main.webp" alt="VERTIGO Kollektion" loading="lazy">
+    </a>
+
+    <!-- 8 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_detail-1.webp">
+      <img src="assets/kombis/kombis_vertigo-06_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 9 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_detail-2.webp">
+      <img src="assets/kombis/kombis_vertigo-06_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 10 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_detail-3.webp">
+      <img src="assets/kombis/kombis_vertigo-06_detail-3.webp" alt="VERTIGO Detail" loading="lazy">
+    </a>
+
+    <!-- 11 — confirmed thumb -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-02_main.webp">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-02_main.webp" alt="VERTIGO EVO Kollektion" loading="lazy">
+    </a>
+
+    <!-- 12 — confirmed thumb for vertigoevo-02_detail-1 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-02_detail-1.webp">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-02_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 13 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-02_detail-2.webp">
+      <img src="assets/kombis/kombis_vertigoevo-02_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 14 — no confirmed thumb for vertigoevo-05_main-2, use direct -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_main-2.webp">
+      <img src="assets/kombis/kombis_vertigoevo-05_main-2.webp" alt="VERTIGO EVO Kollektion" loading="lazy">
+    </a>
+
+    <!-- 15 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_detail-1.webp">
+      <img src="assets/kombis/kombis_vertigoevo-05_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 16 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_detail-2.webp">
+      <img src="assets/kombis/kombis_vertigoevo-05_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 17 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_detail-3.webp">
+      <img src="assets/kombis/kombis_vertigoevo-05_detail-3.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 18 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-07_detail-1.webp">
+      <img src="assets/kombis/kombis_vertigoevo-07_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 19 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-08_detail-1.webp">
+      <img src="assets/kombis/kombis_vertigoevo-08_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+    <!-- 20 -->
+    <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-08_detail-2.webp">
+      <img src="assets/kombis/kombis_vertigoevo-08_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
+    </a>
+
+  </div>
+</section>
+
+<!-- Andere Kollektionen -->
+<section style="background:#FAF9F7" class="py-20 px-6 md:px-14">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-xs tracking-[0.3em] uppercase text-center mb-14 reveal" style="color:#B8976A">Andere Kollektionen</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <!-- REVERSO -->
+      <a href="reverso.html" class="snav-card reveal group">
+        <img src="assets/kombis/thumb/kombis_reverso-04_main.webp" alt="REVERSO Kollektion">
+        <div class="snav-overlay"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <p class="text-white/50 text-xs tracking-[0.25em] uppercase mb-1">Kollektion</p>
+          <p style="font-family:'Playfair Display',serif" class="text-white text-2xl font-light tracking-[0.1em]">REVERSO</p>
+        </div>
+      </a>
+
+      <!-- ALTO -->
+      <a href="alto.html" class="snav-card reveal group">
+        <img src="assets/kombis/thumb/kombis_alto-07_main.webp" alt="ALTO Kollektion">
+        <div class="snav-overlay"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <p class="text-white/50 text-xs tracking-[0.25em] uppercase mb-1">Kollektion</p>
+          <p style="font-family:'Playfair Display',serif" class="text-white text-2xl font-light tracking-[0.1em]">ALTO</p>
+        </div>
+      </a>
+
+      <!-- YOUNG -->
+      <a href="young.html" class="snav-card reveal group">
+        <img src="assets/kombis/thumb/kombis_young-21-01_main.webp" alt="YOUNG Kollektion">
+        <div class="snav-overlay"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <p class="text-white/50 text-xs tracking-[0.25em] uppercase mb-1">Kollektion</p>
+          <p style="font-family:'Playfair Display',serif" class="text-white text-2xl font-light tracking-[0.1em]">YOUNG</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#0F0F0F" class="py-32 px-6 text-center">
+  <div class="max-w-xl mx-auto reveal">
+    <p class="text-white/40 text-xs tracking-[0.3em] uppercase mb-8">Jetzt anfragen</p>
+    <h2 style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:0.06em;line-height:1.35" class="text-white mb-10">
+      Entdecken Sie VERTIGO<br>bei Waschplatz-Experten
+    </h2>
+    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
+       class="inline-block px-10 py-4 text-xs tracking-[0.25em] uppercase font-light transition-all duration-300"
+       style="border:1px solid #B8976A;color:#B8976A"
+       onmouseenter="this.style.background='#B8976A';this.style.color='#0F0F0F'"
+       onmouseleave="this.style.background='transparent';this.style.color='#B8976A'">
+      Zum Shop
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background:#080808" class="px-8 md:px-14 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+  <span style="font-family:'Playfair Display',serif" class="text-white/40 text-base tracking-[0.15em] font-light">PUNTOTRE</span>
+  <div class="flex items-center gap-6 text-xs tracking-wide" style="color:rgba(255,255,255,0.3)">
+    <a href="impressum.html" class="hover:text-white/70 transition-colors">Impressum</a>
+    <span class="opacity-30">|</span>
+    <a href="datenschutz.html" class="hover:text-white/70 transition-colors">Datenschutz</a>
+    <span class="opacity-30">|</span>
+    <span>© 2025 Waschplatz-Experten</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <img id="lightboxImg" src="" alt="">
+  <button onclick="closeLightbox()" style="position:absolute;top:1.5rem;right:2rem;color:rgba(255,255,255,0.5);font-size:2.5rem;font-weight:300;line-height:1;background:none;border:none;cursor:none">&times;</button>
+</div>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+});
+document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
+document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+document.querySelectorAll('a, button, .gal-item, .snav-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('visible');
+}), { threshold: 0.05 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Lightbox
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightboxImg');
+document.querySelectorAll('.gal-item').forEach(item => {
+  item.addEventListener('click', () => {
+    lbImg.src = item.dataset.full || item.querySelector('img').src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+</script>
+</body>
+</html>
