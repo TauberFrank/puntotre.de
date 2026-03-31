@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puntotre — Italienische Badmöbel</title>
-  <meta name="description" content="Puntotre — exklusive Badmöbel aus Italien. Handwerkliche Perfektion, zeitlose Ästhetik. Made in Italy.">
+  <title>Puntotre — Italienische Badmöbel | Waschplatz-Experten</title>
+  <meta name="description" content="Puntotre — exklusive Badmöbel aus Italien. Handwerkliche Perfektion, zeitlose Ästhetik. Made in Italy. Präsentiert von Waschplatz-Experten.">
+  <meta name="author" content="Waschplatz-Experten, Frank Tauber">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -39,6 +40,11 @@
     .flip-page { background: #fff; }
     .flip-page img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .flip-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* Mobile: Gallery tall item nicht mehr spannen */
+    @media (max-width: 767px) {
+      .gallery-tall { grid-row: span 1 !important; min-height: 0 !important; aspect-ratio: 4/3; }
+    }
 
     /* Serie card overlay */
     .serie-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%); }
@@ -158,7 +164,7 @@
 <section class="bg-[#FAF9F7] px-4 md:px-8 pt-4 pb-4">
   <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
 
-    <div class="row-span-2 overflow-hidden cursor-zoom-in gallery-item" style="min-height:400px">
+    <div class="row-span-2 overflow-hidden cursor-zoom-in gallery-item gallery-tall" style="min-height:400px">
       <img src="assets/kombis/kombis_reverso-09_main.webp" alt="" loading="lazy"
            class="w-full h-full object-cover hover:scale-[1.04] transition-transform duration-700">
     </div>
@@ -501,22 +507,24 @@
 <!-- ══════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════ -->
-<footer class="bg-[#080808] px-8 md:px-14 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<footer class="bg-[#080808] px-8 md:px-14 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
   <div class="flex items-center gap-3">
     <svg width="16" height="16" viewBox="0 0 28 28" fill="none">
       <path d="M14 1L1 14L14 27L27 14L14 1Z" stroke="white" stroke-width="1.2" fill="none"/>
       <path d="M10 14H18M14 10V18" stroke="white" stroke-width="1.2"/>
     </svg>
     <span style="font-family:'Playfair Display',serif" class="text-white/50 text-sm tracking-[0.1em]">PUNTOTRE</span>
-    <span class="text-white/15 mx-2">·</span>
+    <span class="text-white/15 mx-1">·</span>
     <span class="text-white/25 text-xs">Sacile (PN), Italy</span>
   </div>
-  <div class="flex flex-col md:flex-row gap-4 md:gap-8 text-xs">
+  <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs items-center">
     <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
-       class="text-white/25 hover:text-white/60 tracking-[0.08em] transition-colors">
+       class="text-white/35 hover:text-white/70 tracking-[0.08em] transition-colors">
       waschplatz-experten.com
     </a>
-    <span class="text-white/12">© 2025 Puntotre srl</span>
+    <a href="impressum.html" class="text-white/25 hover:text-white/70 tracking-[0.08em] transition-colors">Impressum</a>
+    <a href="datenschutz.html" class="text-white/25 hover:text-white/70 tracking-[0.08em] transition-colors">Datenschutz</a>
+    <span class="text-white/15">© 2025 Waschplatz-Experten</span>
   </div>
 </footer>
 
@@ -658,17 +666,24 @@ async function openFlipbook(key, pageCount) {
 
   // Calculate dimensions
   const wrapper  = document.getElementById('flipWrapper');
+  const isMobile = window.innerWidth < 768;
   const maxH     = wrapper.clientHeight - 20;
   const maxW     = wrapper.clientWidth  - 20;
   const ratio    = 842 / 595; // A4
-  // Two-page spread width
-  let pageH = Math.min(maxH, maxW / 2 / (1/ratio));
-  let pageW = pageH / ratio;
-  if (pageW * 2 > maxW) { pageW = maxW / 2; pageH = pageW * ratio; }
+  let pageW, pageH;
+  if (isMobile) {
+    pageH = Math.min(maxH, maxW * ratio);
+    pageW = pageH / ratio;
+    if (pageW > maxW) { pageW = maxW; pageH = pageW * ratio; }
+  } else {
+    pageH = Math.min(maxH, (maxW / 2) * ratio);
+    pageW = pageH / ratio;
+    if (pageW * 2 > maxW) { pageW = maxW / 2; pageH = pageW * ratio; }
+  }
   pageW = Math.floor(pageW); pageH = Math.floor(pageH);
 
   const container = document.getElementById('flipContainer');
-  container.style.width  = (pageW * 2) + 'px';
+  container.style.width  = (isMobile ? pageW : pageW * 2) + 'px';
   container.style.height = pageH + 'px';
   document.getElementById('flipLoading').style.display = 'flex';
 
@@ -679,13 +694,12 @@ async function openFlipbook(key, pageCount) {
     `${cat.dir}/page_${String(i+1).padStart(3,'0')}${ext}`
   );
 
-
   pageFlip = new St.PageFlip(container, {
     width: pageW,
     height: pageH,
     showCover: true,
     mobileScrollSupport: false,
-    usePortrait: false,
+    usePortrait: isMobile,
     autoSize: false,
     maxShadowOpacity: 0.4,
     flippingTime: 700,
