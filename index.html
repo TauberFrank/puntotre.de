@@ -91,6 +91,11 @@
     #katPrev { left: 0; border-radius: 0 4px 4px 0; }
     #katNext { right: 0; border-radius: 4px 0 0 4px; }
 
+    /* ── Header WPE link ── */
+    @media (min-width: 768px) { #wpe-header-link { display: flex; } }
+    #wpe-header-link:hover span:first-child { color: rgba(255,255,255,0.6) !important; }
+    #wpe-header-link:hover span:last-child  { color: rgba(255,255,255,1)   !important; }
+
     /* ── Mobile ── */
     @media (max-width: 767px) {
       .gallery-tall { grid-row: span 1 !important; min-height: 0 !important; aspect-ratio: 4/3; }
@@ -132,10 +137,10 @@
     <a href="ola.html"     class="text-white/45 hover:text-white text-[10px] tracking-[0.18em] uppercase transition-colors">Ola</a>
   </nav>
 
-  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
-     class="hidden md:flex flex-col items-end leading-none transition-colors duration-300 group">
-    <span class="text-white/25 group-hover:text-white/50 text-[8px] tracking-[0.22em] uppercase mb-[3px] transition-colors duration-300">Powered by</span>
-    <span class="text-white/60 group-hover:text-white text-xs tracking-[0.12em] uppercase transition-colors duration-300">Waschplatz-Experten ↗</span>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" id="wpe-header-link"
+     style="flex-direction:column;align-items:flex-end;line-height:1;text-decoration:none;display:none">
+    <span style="color:rgba(255,255,255,0.35);font-size:8px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:3px;transition:color 0.3s">Powered by</span>
+    <span style="color:rgba(255,255,255,0.7);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s">Waschplatz-Experten ↗</span>
   </a>
 </header>
 
@@ -571,73 +576,73 @@
 <!-- ══════════════════════════════════════════════
      12. DESIGN, DAS PASST — Waschplatz-Experten
 ══════════════════════════════════════════════ -->
-<section class="bg-[#0F0F0F] grid grid-cols-1 md:grid-cols-2">
+<section class="bg-[#0F0F0F]">
 
-  <!-- Left: Image -->
-  <div class="relative overflow-hidden" style="min-height:560px">
-    <img src="assets/kombis/kombis_alto-07_detail-1.webp" alt="" loading="lazy"
-         class="absolute inset-0 w-full h-full object-cover"
-         style="opacity:0.65">
-    <div class="absolute inset-0" style="background:linear-gradient(to right,transparent 60%,#0F0F0F 100%)"></div>
-  </div>
-
-  <!-- Right: Content -->
-  <div class="flex flex-col justify-center px-10 md:px-16 py-20 md:py-32 reveal">
-
-    <p class="text-[#B8976A] text-[9px] tracking-[0.28em] uppercase mb-8">Waschplatz-Experten</p>
-
-    <h2 style="font-family:'Playfair Display',serif"
-        class="text-white font-light leading-[1.02] text-[clamp(2.6rem,4.5vw,4.8rem)] mb-8">
+  <!-- Headline — volle Breite, selbstbewusst -->
+  <div class="px-8 md:px-14 pt-20 md:pt-32 pb-14 md:pb-20 reveal">
+    <p style="color:#B8976A;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;margin-bottom:1.5rem">Waschplatz-Experten</p>
+    <h2 style="font-family:'Playfair Display',serif;font-weight:300;color:white;line-height:1.0;font-size:clamp(3.5rem,8vw,8rem)">
       Design,<br><em>das passt.</em>
     </h2>
-
-    <div class="w-8 mb-8" style="height:1px;background:#B8976A"></div>
-
-    <p class="text-white/50 font-light text-sm leading-relaxed mb-14" style="max-width:360px">
-      Jede Serie — ein modulares System aus Unterschränken, Waschtischen in
-      verschiedenen Materialien, Spiegeln, Leuchten und über 300 Oberflächen,
-      die aufeinander abgestimmt sind und sich frei kombinieren lassen.
+    <p style="color:rgba(255,255,255,0.45);font-weight:300;font-size:1rem;line-height:1.7;margin-top:1.5rem;max-width:44ch">
+      Hier entsteht Ihr Bild — dort wird es Wirklichkeit.
+      Bei Waschplatz-Experten planen und konfigurieren Sie Ihre
+      Puntotre-Kombination: Unterschränke, Waschtische in verschiedenen
+      Materialien, Spiegel, Leuchten und über 300 Oberflächen.
       Ihr Raum. Ihre Maße. Ihr Stil.
     </p>
+  </div>
 
-    <!-- Three facts — editorial -->
-    <div class="space-y-8 mb-14">
+  <!-- Split: Image | Facts + CTA -->
+  <div class="grid grid-cols-1 md:grid-cols-2">
 
-      <div class="flex items-start gap-6">
-        <span style="font-family:'Playfair Display',serif;min-width:2.8rem"
-              class="text-[#B8976A] text-3xl font-light leading-none">6</span>
-        <div>
-          <p class="text-white text-sm font-light tracking-wide">Wochen Lieferzeit</p>
-          <p class="text-white/30 text-xs mt-1">ab Bestellung</p>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-6">
-        <span style="font-family:'Playfair Display',serif;min-width:2.8rem;font-size:0.9rem;letter-spacing:0.04em"
-              class="text-[#B8976A] font-light leading-none pt-1">D·A·CH</span>
-        <div>
-          <p class="text-white text-sm font-light tracking-wide">Frei Haus</p>
-          <p class="text-white/30 text-xs mt-1">Deutschland · Österreich · Schweiz</p>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-6">
-        <span style="font-family:'Playfair Display',serif;min-width:2.8rem;font-size:1.5rem"
-              class="text-[#B8976A] font-light leading-none">∞</span>
-        <div>
-          <p class="text-white text-sm font-light tracking-wide">Persönliche Beratung</p>
-          <p class="text-white/30 text-xs mt-1">Online, individuell, kostenlos</p>
-        </div>
-      </div>
-
+    <!-- Left: Image -->
+    <div class="relative overflow-hidden" style="min-height:480px">
+      <img src="assets/kombis/kombis_alto-07_detail-1.webp" alt="" loading="lazy"
+           class="absolute inset-0 w-full h-full object-cover" style="opacity:0.7">
     </div>
 
-    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
-       class="self-start inline-block border border-[#B8976A] text-[#B8976A] hover:bg-[#B8976A] hover:text-white
-              text-[10px] tracking-[0.22em] uppercase px-10 py-4 transition-all duration-500">
-      Jetzt planen ↗
-    </a>
+    <!-- Right: Facts + CTA -->
+    <div class="flex flex-col justify-center px-8 md:px-14 py-14 md:py-20 reveal" style="border-left:1px solid rgba(255,255,255,0.06)">
 
+      <div style="height:1px;width:2rem;background:#B8976A;margin-bottom:2.5rem"></div>
+
+      <div style="display:flex;flex-direction:column;gap:2rem;margin-bottom:3rem">
+
+        <div style="display:flex;align-items:flex-start;gap:1.5rem">
+          <span style="font-family:'Playfair Display',serif;color:#B8976A;font-size:2rem;font-weight:300;line-height:1;min-width:3rem">6</span>
+          <div>
+            <p style="color:white;font-size:0.875rem;font-weight:300;letter-spacing:0.05em">Wochen Lieferzeit</p>
+            <p style="color:rgba(255,255,255,0.3);font-size:0.75rem;margin-top:0.25rem">ab Bestellung</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:1.5rem">
+          <span style="font-family:'Playfair Display',serif;color:#B8976A;font-size:0.85rem;font-weight:300;line-height:1.4;min-width:3rem;letter-spacing:0.05em">D·A·CH</span>
+          <div>
+            <p style="color:white;font-size:0.875rem;font-weight:300;letter-spacing:0.05em">Frei Haus</p>
+            <p style="color:rgba(255,255,255,0.3);font-size:0.75rem;margin-top:0.25rem">Deutschland · Österreich · Schweiz</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:1.5rem">
+          <span style="font-family:'Playfair Display',serif;color:#B8976A;font-size:1.4rem;font-weight:300;line-height:1;min-width:3rem">∞</span>
+          <div>
+            <p style="color:white;font-size:0.875rem;font-weight:300;letter-spacing:0.05em">Persönliche Beratung</p>
+            <p style="color:rgba(255,255,255,0.3);font-size:0.75rem;margin-top:0.25rem">Online, individuell, kostenlos</p>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
+         style="display:inline-block;align-self:flex-start;border:1px solid #B8976A;color:#B8976A;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;transition:background 0.4s,color 0.4s"
+         onmouseenter="this.style.background='#B8976A';this.style.color='white'"
+         onmouseleave="this.style.background='transparent';this.style.color='#B8976A'">
+        Jetzt planen bei Waschplatz-Experten ↗
+      </a>
+
+    </div>
   </div>
 </section>
 
@@ -684,15 +689,35 @@
 </footer>
 
 
-<!-- WhatsApp -->
-<a href="https://wa.me/4971411421690" target="_blank" rel="noopener" title="WhatsApp — Waschplatz-Experten"
-   style="position:fixed;bottom:1.75rem;right:1.75rem;z-index:9990;width:52px;height:52px;background:#B8976A;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(184,151,106,0.45);transition:transform 0.2s ease,box-shadow 0.2s ease"
-   onmouseenter="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 32px rgba(184,151,106,0.6)'"
-   onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 24px rgba(184,151,106,0.45)'">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
+<!-- Mobile Sticky Bar — nur auf kleinen Screens -->
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9980;background:rgba(10,10,10,0.96);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.25rem" id="mobileBar">
+  <a href="tel:+4971411421690"
+     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+    Anrufen
+  </a>
+  <a href="https://wa.me/4971411421690" target="_blank" rel="noopener"
+     style="display:flex;align-items:center;gap:0.5rem;color:#B8976A;text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8976A">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    WhatsApp
+  </a>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
+     style="display:flex;flex-direction:column;align-items:flex-end;text-decoration:none">
+    <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.2em;text-transform:uppercase">Powered by</span>
+    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase">WPE ↗</span>
+  </a>
+</div>
+<style>
+  body { padding-bottom: 52px; }
+  @media (min-width: 768px) {
+    #mobileBar { padding: 0.65rem 3rem; }
+    #mobileBar a { font-size: 0.72rem; }
+  }
+</style>
 
 <!-- Schema.org -->
 <script type="application/ld+json">
