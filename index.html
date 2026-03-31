@@ -933,8 +933,13 @@ function goTo(n) {
   slides[cur].classList.add('active');
   dots[cur].style.width = '24px'; dots[cur].style.opacity = '1';
 }
-dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.slide)));
-setInterval(() => goTo((cur + 1) % slides.length), 5500);
+let heroTimer;
+function scheduleNext(delay) {
+  clearTimeout(heroTimer);
+  heroTimer = setTimeout(() => { goTo((cur + 1) % slides.length); scheduleNext(7000); }, delay);
+}
+dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); scheduleNext(7000); }));
+scheduleNext(9000); // Erstes Slide bleibt länger (Vorhang öffnet bei ~5s)
 
 // ── Scroll reveal ──────────────────────────────
 const revObserver = new IntersectionObserver(entries => {
