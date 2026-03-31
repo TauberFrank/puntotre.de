@@ -1,0 +1,270 @@
+"""
+materialien.html — Teaser-Version.
+Kein Katalog. Visuelle Dichte als Statement. Lust machen → WPE.
+"""
+import os, random
+
+base = os.path.dirname(os.path.abspath(__file__))
+tdir = os.path.join(base, "assets", "muster", "thumb")
+
+# Kuratierte Auswahl: visuell diverse Vertreter jeder Kategorie
+# Ziel: ~80 Swatches — genug um "Wow" zu sagen, nicht genug um alles zu zeigen
+
+PICKS = [
+    # Lackiert — Farben-Spektrum: repräsentative Auswahl quer durchs Spektrum
+    "muster_lackiert-l001-weiss.webp",
+    "muster_lackiert-l005-perlweiss.webp",
+    "muster_lackiert-l007-seidengrau.webp",
+    "muster_lackiert-l010-platingrau.webp",
+    "muster_lackiert-l013-steingrau.webp",
+    "muster_lackiert-l016-quarzgrau.webp",
+    "muster_lackiert-l019-graphitgrau.webp",
+    "muster_lackiert-l049-graphitschwarz.webp",
+    "muster_lackiert-l050-tiefschwarz.webp",
+    "muster_lackiert-l021-beigeterra.webp",
+    "muster_lackiert-l023-beigegrau.webp",
+    "muster_lackiert-l024-terrabraun.webp",
+    "muster_lackiert-l055-sahara.webp",
+    "muster_lackiert-l056-argilla.webp",
+    "muster_lackiert-l057-talpa.webp",
+    "muster_lackiert-l058-japur.webp",
+    "muster_lackiert-l065-sandstone.webp",
+    "muster_lackiert-l066-rugine.webp",
+    "muster_lackiert-l067-terracota.webp",
+    "muster_lackiert-l068-rossoaurora.webp",
+    "muster_lackiert-l072-ocra.webp",
+    "muster_lackiert-l060-salvia.webp",
+    "muster_lackiert-l040-moosgruen.webp",
+    "muster_lackiert-l064-graugruen.webp",
+    "muster_lackiert-l044-blaugruen.webp",
+    "muster_lackiert-l045-hellblau.webp",
+    "muster_lackiert-l047-azurblau.webp",
+    "muster_lackiert-l048-ozeanblau.webp",
+    "muster_lackiert-l063-mattblau.webp",
+    "muster_lackiert-l017-blaugrau.webp",
+    "muster_lackiert-l069-malvengrau.webp",
+    "muster_lackiert-l071-mattrosa.webp",
+    "muster_lackiert-l054-bruma.webp",
+    "muster_lackiert-l062-nuvola.webp",
+    # Echtholz — alle 5
+    "muster_echtholz-080-nussbaum.webp",
+    "muster_echtholz-081-ebenholz.webp",
+    "muster_echtholz-082-eichecoke.webp",
+    "muster_echtholz-083-ulme.webp",
+    "muster_echtholz-086-eichenatur.webp",
+    # Laminat — Holz + Stein + Textur
+    "muster_laminat-129x-olmobardini.webp",
+    "muster_laminat-130x-eucalipto.webp",
+    "muster_laminat-134x-cemento.webp",
+    "muster_laminat-136x-nocegrey.webp",
+    "muster_laminat-137x-olmochiaro.webp",
+    "muster_laminat-138x-olmoterra.webp",
+    "muster_laminat-139x-ovattanebbia.webp",
+    "muster_laminat-141x-ovattaquarzo.webp",
+    "muster_laminat-144x-tarantasiena.webp",
+    "muster_laminat-118x-areslunar.webp",
+    "muster_laminat-116x-aresgadira.webp",
+    # Lava & Concrete
+    "muster_lava-lv01.webp",
+    "muster_lava-lv02.webp",
+    "muster_lava-lv03.webp",
+    "muster_concrete-lc01.webp",
+    "muster_concrete-lc02.webp",
+    "muster_087m-rovere-cemento-nodato.webp",
+    # GLAKS — Glas-Fronten (plain)
+    "muster_glaks-g001m-neve.webp",
+    "muster_glaks-g021m-gesso.webp",
+    "muster_glaks-g060m-grigio-sasso.webp",
+    "muster_glaks-g067m-grigio-reale.webp",
+    "muster_glaks-g115m-fumo.webp",
+    "muster_glaks-g119m-grigio-singapore.webp",
+    "muster_glaks-g179m-agave.webp",
+    "muster_glaks-g200m-blu-marino.webp",
+    "muster_glaks-g039m-rosso-mattone.webp",
+    # GLAKS — Cannettato (Rillen)
+    "muster_glaks-n001m-neve-cannettato.webp",
+    "muster_glaks-n060m-grigio-sasso-cannettato.webp",
+    "muster_glaks-n115m-fumo-cannettato.webp",
+    "muster_glaks-n179m-agave-cannettato.webp",
+    "muster_glaks-n200m-blu-marino-cannettato.webp",
+    # Metallic — alle 4
+    "muster_metallic-901x-acciaio.webp",
+    "muster_metallic-902x-peltro.webp",
+    "muster_metallic-903x-ottone.webp",
+    "muster_metallic-904x-rame.webp",
+    # Polymer
+    "muster_polymer-160x-bianco.webp",
+    "muster_polymer-161x-stonegrey.webp",
+    "muster_polymer-186-darkrockford.webp",
+    "muster_polymer-188x-thermoa.webp",
+    "muster_polymer-191x-frassinoverde.webp",
+    "muster_polymer-194x-frassinonero.webp",
+]
+
+# Nur vorhandene Dateien
+picks = [f for f in PICKS if os.path.exists(os.path.join(tdir, f))]
+
+def label(f):
+    import re
+    n = f.replace("muster_","").replace(".webp","")
+    for p in ["lackiert-l0\\d+-","lackiert-l0\\d+[a-z]+-","glaks-g\\d+m-","glaks-n\\d+m-",
+              "echtholz-\\d+-","laminat-\\d+x?-","metallic-\\d+x?-","polymer-\\d+x?-",
+              "concrete-lc\\d+-?","lava-lv\\d+-?","\\d+m-"]:
+        n = re.sub('^'+p, '', n)
+    n = n.strip('-').replace('-',' ').title()
+    return n or f
+
+swatches_html = ""
+for f in picks:
+    src = f"assets/muster/thumb/{f}"
+    name = label(f)
+    swatches_html += f'<div class="sw" title="{name}" style="background-image:url(\'{src}\')"><span>{name}</span></div>\n'
+
+html = f"""<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oberflächen — Puntotre</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/output.css">
+  <style>
+    body {{ font-family:'Inter',sans-serif; background:#0A0A0A; color:#fff; -webkit-font-smoothing:antialiased; cursor:none; }}
+    #cursor {{ position:fixed;top:0;left:0;width:8px;height:8px;background:#B8976A;border-radius:50%;pointer-events:none;z-index:99998;will-change:transform;transition:width .25s,height .25s,background .25s,opacity .3s }}
+    #cursor.hover {{ width:32px;height:32px;background:transparent;border:1px solid rgba(184,151,106,0.6) }}
+    @media(hover:none){{#cursor{{display:none}}body{{cursor:auto}}}}
+    .reveal {{ opacity:0;transition:opacity .9s ease }}
+    .reveal.visible {{ opacity:1 }}
+    .reveal-d1 {{ transition-delay:.15s }}
+    .reveal-d2 {{ transition-delay:.3s }}
+    .reveal-d3 {{ transition-delay:.45s }}
+
+    /* Swatch grid */
+    .sw-grid {{ display:flex;flex-wrap:wrap;gap:2px;line-height:0 }}
+    .sw {{
+      flex-shrink:0;
+      background-size:cover;background-position:center;
+      position:relative;overflow:hidden;
+      width:76px;height:76px;
+      transition:transform .35s ease,box-shadow .35s ease;
+    }}
+    .sw:hover {{ transform:scale(1.1);z-index:2;box-shadow:0 6px 24px rgba(0,0,0,0.6) }}
+    .sw span {{
+      position:absolute;inset:0;display:flex;align-items:flex-end;
+      padding:5px 6px;font-size:8px;line-height:1.25;color:#fff;
+      background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 65%);
+      opacity:0;transition:opacity .2s;letter-spacing:0.04em;
+    }}
+    .sw:hover span {{ opacity:1 }}
+    @media(max-width:479px){{ .sw {{ width:60px;height:60px }} }}
+    @media(min-width:1440px){{ .sw {{ width:84px;height:84px }} }}
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 z-50 px-8 md:px-14 py-5 md:py-6 flex items-center justify-between" style="background:rgba(10,10,10,0.94);backdrop-filter:blur(20px)">
+  <a href="index.html">
+    <span style="font-family:'Playfair Display',serif" class="text-white text-xl tracking-[0.15em] font-light">PUNTOTRE</span>
+  </a>
+  <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+</header>
+
+<!-- INTRO -->
+<section style="min-height:55vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 4rem;max-width:900px">
+  <p class="reveal" style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#B8976A;margin-bottom:1.5rem">Oberflächen &amp; Materialien</p>
+  <h1 class="reveal reveal-d1" style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.8rem,7vw,6.5rem);line-height:1.05;margin-bottom:2rem">
+    300+ Oberflächen.<br><em>Eine davon ist Ihre.</em>
+  </h1>
+  <p class="reveal reveal-d2" style="font-size:1rem;color:rgba(255,255,255,0.4);font-weight:300;max-width:40ch;line-height:1.85">
+    Lackiert. Echtholz. Glas. Metallic. Lava.
+    Jede Puntotre-Komposition ist individuell — bis ins letzte Detail.
+  </p>
+</section>
+
+<!-- SWATCH GRID — volle Breite, dicht -->
+<section class="reveal" style="padding:0 0 2px">
+  <div class="sw-grid">
+{swatches_html}
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:7rem 3rem;text-align:center">
+  <p class="reveal" style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#B8976A;margin-bottom:1.5rem">Nächster Schritt</p>
+  <h2 class="reveal reveal-d1" style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2rem,4.5vw,3.8rem);margin-bottom:1.2rem">
+    Design, <em>das passt.</em>
+  </h2>
+  <p class="reveal reveal-d2" style="color:rgba(255,255,255,0.35);font-size:0.9rem;margin-bottom:3rem;max-width:36ch;margin-left:auto;margin-right:auto;line-height:1.85">
+    Ihre Serie. Ihre Oberfläche. Ihre Maße.<br>
+    Bei Waschplatz-Experten wird daraus Ihr Raum.
+  </p>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" class="reveal reveal-d3"
+     style="display:inline-block;border:1px solid #B8976A;color:#B8976A;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.8rem;text-decoration:none;transition:background .4s,color .4s"
+     onmouseenter="this.style.background='#B8976A';this.style.color='#0A0A0A'"
+     onmouseleave="this.style.background='transparent';this.style.color='#B8976A'">
+    Jetzt konfigurieren ↗
+  </a>
+</section>
+
+<!-- Footer -->
+<footer style="background:#080808" class="px-8 md:px-14 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+  <span style="font-family:'Playfair Display',serif" class="text-white/50 text-sm tracking-[0.12em]">PUNTOTRE</span>
+  <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs items-center">
+    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" class="text-white/35 hover:text-white/70 transition-colors">waschplatz-experten.com</a>
+    <a href="impressum.html" class="text-white/25 hover:text-white/70 transition-colors">Impressum</a>
+    <a href="datenschutz.html" class="text-white/25 hover:text-white/70 transition-colors">Datenschutz</a>
+    <span class="text-white/15">© 2026 Waschplatz-Experten</span>
+  </div>
+</footer>
+
+<!-- Sticky Bar -->
+<div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:9980;background:rgba(10,10,10,0.96);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.5rem">
+  <a href="tel:+4971411421690" style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em;white-space:nowrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Anrufen (8–20 Uhr)
+  </a>
+  <a href="https://wa.me/4971411421690" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:#B8976A;text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8976A"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:flex-end;text-decoration:none">
+    <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.2em;text-transform:uppercase">Powered by</span>
+    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase"><span class="wpe-short">WPE ↗</span><span class="wpe-long">Waschplatz-Experten ↗</span></span>
+  </a>
+</div>
+<style>
+  body {{ padding-bottom:52px }}
+  @media(min-width:768px){{ #stickyBar {{ padding:0.65rem 3rem }} #stickyBar a {{ font-size:0.72rem }} }}
+  .wpe-long{{display:none}}
+  @media(min-width:768px){{.wpe-short{{display:none}}.wpe-long{{display:inline}}}}
+</style>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {{
+  cursor.style.transform = `translate(calc(${{e.clientX}}px - 50%), calc(${{e.clientY}}px - 50%))`;
+}});
+document.querySelectorAll('a, .sw').forEach(el => {{
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+}});
+const obs = new IntersectionObserver(entries => {{
+  entries.forEach(e => {{ if(e.isIntersecting) e.target.classList.add('visible') }});
+}}, {{ threshold:0.05 }});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
+"""
+
+out = os.path.join(base, "materialien.html")
+with open(out, "w", encoding="utf-8") as f:
+    f.write(html)
+
+count = html.count('class="sw"')
+print(f"materialien.html geschrieben — {count} Swatches")

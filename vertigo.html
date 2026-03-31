@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VERTIGO — Puntotre</title>
+  <title>VERTIGO | Puntotre D-A-CH — Badmöbel aus Norditalien</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://puntotre.de/vertigo.html">
-  <meta property="og:title"       content="VERTIGO — Puntotre Badmöbel">
-  <meta property="og:description" content="VERTIGO: Schwebende Leichtigkeit trifft materiellen Tiefgang. Exklusive Badmöbel aus Italien bei Waschplatz-Experten.">
+  <link rel="canonical" href="https://puntotre.de/vertigo.html">
+  <meta property="og:title"       content="VERTIGO — Puntotre D-A-CH | Badmöbel">
+  <meta property="og:description" content="VERTIGO: Schwebende Leichtigkeit, norditalienische Qualität — bei Waschplatz-Experten für DE · AT · CH.">
   <meta property="og:image"       content="https://puntotre.de/assets/kombis/kombis_vertigoevo-05_main-3.webp">
   <meta name="twitter:card"       content="summary_large_image">
-  <meta name="description" content="VERTIGO — Italienische Badmöbel von Puntotre. Leicht wie ein Traum, fest wie Stein. Präsentiert von Waschplatz-Experten.">
+  <meta name="description" content="VERTIGO — Schwebende Rahmenoptik trifft materiellen Tiefgang. Exklusive Badmöbel von Puntotre, über 300 Oberflächen. Erhältlich bei Waschplatz-Experten für Deutschland, Österreich und die Schweiz.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -53,17 +54,58 @@
     @keyframes scroll-drop { 0% { transform: translateY(-100%); opacity:0; } 25% { opacity:1; } 75% { opacity:1; } 100% { transform: translateY(200%); opacity:0; } }
     .scroll-line-inner { animation: scroll-drop 2s ease-in-out infinite; }
   </style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://puntotre.de/vertigo.html",
+      "url": "https://puntotre.de/vertigo.html",
+      "name": "VERTIGO — Puntotre D-A-CH",
+      "description": "Badmöbel-Serie mit charakteristischer Rahmenoptik. Schwebende Leichtigkeit trifft außergewöhnliche Materialtiefe.",
+      "inLanguage": "de-DE",
+      "isPartOf": {"@id": "https://puntotre.de/#website"}
+    },
+    {
+      "@type": "Product",
+      "name": "Puntotre VERTIGO",
+      "brand": {"@type": "Brand", "name": "Puntotre"},
+      "description": "Badmöbel-Serie mit charakteristischer Rahmenoptik. Schwebende Leichtigkeit trifft außergewöhnliche Materialtiefe.",
+      "offers": {
+        "@type": "Offer",
+        "seller": {
+          "@type": "Organization",
+          "name": "Waschplatz-Experten",
+          "url": "https://www.waschplatz-experten.com"
+        },
+        "areaServed": ["DE", "AT", "CH"]
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="overflow-x-hidden">
 <div id="cursor"></div>
 
 <!-- Header -->
-<header class="fixed top-0 left-0 right-0 z-50 px-8 md:px-14 py-6 flex items-center justify-between" style="background:rgba(15,15,15,0.88);backdrop-filter:blur(20px)">
+<header class="fixed top-0 left-0 right-0 z-50 px-8 md:px-14 py-5 md:py-6 flex items-center justify-between" style="background:rgba(15,15,15,0.88);backdrop-filter:blur(20px)">
   <a href="index.html">
     <span style="font-family:'Playfair Display',serif" class="text-white text-xl tracking-[0.15em] font-light">PUNTOTRE</span>
   </a>
-  <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" class="wpe-hdr-link"
+       style="flex-direction:column;align-items:flex-end;line-height:1;text-decoration:none;display:none">
+      <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:2px">Powered by</span>
+      <span style="color:rgba(255,255,255,0.65);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase">Waschplatz-Experten ↗</span>
+    </a>
+  </div>
 </header>
+<style>.wpe-hdr-link:hover span:last-child{color:white!important} @media(min-width:768px){.wpe-hdr-link{display:flex!important}}</style>
 
 <!-- Hero -->
 <section class="relative h-screen min-h-[600px] overflow-hidden">
@@ -98,6 +140,7 @@
       Leicht wie ein Traum, fest wie Stein — VERTIGO definiert Leichtigkeit neu.
     </p>
     <div class="mt-10 w-12 h-px mx-auto" style="background:#B8976A"></div>
+    <p class="mt-8 text-xs tracking-[0.14em] uppercase reveal" style="color:rgba(0,0,0,0.3)">Zwei Varianten: Push-to-Open &amp; klassische Griffe · VERTIGO EVO mit integrierter Griffleiste</p>
   </div>
 </section>
 
@@ -112,12 +155,12 @@
 
     <!-- 2 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-01_detail-1.webp">
-      <img src="assets/kombis/kombis_vertigo-01_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-01_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
 
     <!-- 3 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-01_detail-2.webp">
-      <img src="assets/kombis/kombis_vertigo-01_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-01_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
 
     <!-- 4 — confirmed thumb -->
@@ -127,12 +170,12 @@
 
     <!-- 5 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-02_detail-1.webp">
-      <img src="assets/kombis/kombis_vertigo-02_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-02_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
 
     <!-- 6 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-02_detail-2.webp">
-      <img src="assets/kombis/kombis_vertigo-02_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-02_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
 
     <!-- 7 — confirmed thumb -->
@@ -142,18 +185,33 @@
 
     <!-- 8 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_detail-1.webp">
-      <img src="assets/kombis/kombis_vertigo-06_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-06_detail-1.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
 
     <!-- 9 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_detail-2.webp">
-      <img src="assets/kombis/kombis_vertigo-06_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-06_detail-2.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
 
     <!-- 10 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigo-06_detail-3.webp">
-      <img src="assets/kombis/kombis_vertigo-06_detail-3.webp" alt="VERTIGO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigo-06_detail-3.webp" alt="VERTIGO Detail" loading="lazy">
     </a>
+
+  </div>
+</section>
+
+<!-- VERTIGO EVO Label -->
+<section style="background:#0F0F0F;padding:3rem 2rem 1.5rem">
+  <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:2.5rem;display:flex;align-items:baseline;gap:1.5rem">
+    <p style="font-family:'Playfair Display',serif;color:white;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;letter-spacing:0.08em">VERTIGO <em>EVO</em></p>
+    <p style="color:rgba(255,255,255,0.3);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase">Integrierte Griffleiste</p>
+  </div>
+</section>
+
+<!-- EVO Gallery -->
+<section style="background:#0F0F0F" class="px-1 md:px-2 pb-1">
+  <div class="gal">
 
     <!-- 11 — confirmed thumb -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-02_main.webp">
@@ -167,45 +225,72 @@
 
     <!-- 13 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-02_detail-2.webp">
-      <img src="assets/kombis/kombis_vertigoevo-02_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-02_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
     <!-- 14 — no confirmed thumb for vertigoevo-05_main-2, use direct -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_main-2.webp">
-      <img src="assets/kombis/kombis_vertigoevo-05_main-2.webp" alt="VERTIGO EVO Kollektion" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-05_main-2.webp" alt="VERTIGO EVO Kollektion" loading="lazy">
     </a>
 
     <!-- 15 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_detail-1.webp">
-      <img src="assets/kombis/kombis_vertigoevo-05_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-05_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
     <!-- 16 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_detail-2.webp">
-      <img src="assets/kombis/kombis_vertigoevo-05_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-05_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
     <!-- 17 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-05_detail-3.webp">
-      <img src="assets/kombis/kombis_vertigoevo-05_detail-3.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-05_detail-3.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
     <!-- 18 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-07_detail-1.webp">
-      <img src="assets/kombis/kombis_vertigoevo-07_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-07_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
     <!-- 19 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-08_detail-1.webp">
-      <img src="assets/kombis/kombis_vertigoevo-08_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-08_detail-1.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
     <!-- 20 -->
     <a class="gal-item reveal" data-full="assets/kombis/kombis_vertigoevo-08_detail-2.webp">
-      <img src="assets/kombis/kombis_vertigoevo-08_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_vertigoevo-08_detail-2.webp" alt="VERTIGO EVO Detail" loading="lazy">
     </a>
 
   </div>
+</section>
+
+
+<!-- Fakten + CTA -->
+<section style="background:#0A0A0A;padding:5rem 2rem 6rem;text-align:center">
+  <div style="display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:3rem;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:2.5rem 0">
+
+      <div style="text-align:center;padding:0 1.5rem">
+        <p style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:white">6</p>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.6rem">Höhen</p>
+      </div>
+      <div style="text-align:center;padding:0 1.5rem">
+        <p style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:white">4</p>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.6rem">Tiefen</p>
+      </div>
+      <div style="text-align:center;padding:0 1.5rem">
+        <p style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:white">~60</p>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.6rem">Oberflächen</p>
+      </div>
+  </div>
+  <p style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:2.5rem">Lackiert · Polymer</p>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
+     style="display:inline-block;border:1px solid #B8976A;color:#B8976A;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.8rem;text-decoration:none;transition:background .4s,color .4s"
+     onmouseenter="this.style.background='#B8976A';this.style.color='#0A0A0A'"
+     onmouseleave="this.style.background='transparent';this.style.color='#B8976A'">
+    Jetzt bei Waschplatz-Experten planen ↗
+  </a>
 </section>
 
 <!-- Andere Kollektionen -->
@@ -266,14 +351,13 @@
 </section>
 
 <!-- Footer -->
-<footer style="background:#080808" class="px-8 md:px-14 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-  <span style="font-family:'Playfair Display',serif" class="text-white/40 text-base tracking-[0.15em] font-light">PUNTOTRE</span>
-  <div class="flex items-center gap-6 text-xs tracking-wide" style="color:rgba(255,255,255,0.3)">
-    <a href="impressum.html" class="hover:text-white/70 transition-colors">Impressum</a>
-    <span class="opacity-30">|</span>
-    <a href="datenschutz.html" class="hover:text-white/70 transition-colors">Datenschutz</a>
-    <span class="opacity-30">|</span>
-    <span>© 2026 Waschplatz-Experten</span>
+<footer style="background:#080808" class="px-8 md:px-14 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+  <span style="font-family:'Playfair Display',serif" class="text-white/50 text-sm tracking-[0.12em]">PUNTOTRE</span>
+  <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs items-center">
+    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" class="text-white/35 hover:text-white/70 transition-colors">waschplatz-experten.com</a>
+    <a href="impressum.html" class="text-white/25 hover:text-white/70 transition-colors">Impressum</a>
+    <a href="datenschutz.html" class="text-white/25 hover:text-white/70 transition-colors">Datenschutz</a>
+    <span class="text-white/15">© 2026 Waschplatz-Experten</span>
   </div>
 </footer>
 
@@ -320,11 +404,11 @@ lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
 <!-- Sticky Bottom Bar -->
 <div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:9980;background:rgba(10,10,10,0.96);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.5rem">
   <a href="tel:+4971411421690"
-     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
+     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em;white-space:nowrap">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
     </svg>
-    Anrufen
+    Anrufen (8–20 Uhr)
   </a>
   <a href="https://wa.me/4971411421690" target="_blank" rel="noopener"
      style="display:flex;align-items:center;gap:0.5rem;color:#B8976A;text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
@@ -336,12 +420,14 @@ lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
   <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
      style="display:flex;flex-direction:column;align-items:flex-end;text-decoration:none">
     <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.2em;text-transform:uppercase">Powered by</span>
-    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase">WPE ↗</span>
+    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase"><span class="wpe-short">WPE ↗</span><span class="wpe-long">Waschplatz-Experten ↗</span></span>
   </a>
 </div>
 <style>
   body { padding-bottom: 52px; }
   @media (min-width: 768px) { #stickyBar { padding: 0.65rem 3rem; } #stickyBar a { font-size: 0.72rem; } }
+  .wpe-long{display:none}
+  @media(min-width:768px){.wpe-short{display:none}.wpe-long{display:inline}}
 </style>
 </body>
 </html>

@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OLA — Puntotre</title>
+  <title>OLA | Puntotre D-A-CH — Badmöbel aus Norditalien</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://puntotre.de/ola.html">
-  <meta property="og:title"       content="OLA — Puntotre Badmöbel">
-  <meta property="og:description" content="OLA: Organische Formen, pure Eleganz. Italienische Badmöbel bei Waschplatz-Experten.">
+  <link rel="canonical" href="https://puntotre.de/ola.html">
+  <meta property="og:title"       content="OLA — Puntotre D-A-CH | Badmöbel">
+  <meta property="og:description" content="OLA: Organische Formen, pure Eleganz. Puntotre Badmöbel bei Waschplatz-Experten für DE · AT · CH.">
   <meta property="og:image"       content="https://puntotre.de/assets/kombis/kombis_ola-nw213b_main.webp">
   <meta name="twitter:card"       content="summary_large_image">
+  <meta name="description" content="OLA — Organische Formen mit klassischen Griffen von Puntotre. Warme Ästhetik, norditalienische Qualität, über 300 Oberflächen. Erhältlich bei Waschplatz-Experten für Deutschland, Österreich und die Schweiz.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -37,6 +39,39 @@
     #lightbox.open { display: flex; }
     #lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; }
   </style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://puntotre.de/ola.html",
+      "url": "https://puntotre.de/ola.html",
+      "name": "OLA — Puntotre D-A-CH",
+      "description": "Badmöbel-Serie mit organischen Formen und klassischen Griffelementen. Warme Ästhetik aus Norditalien mit individueller Maßanpassung.",
+      "inLanguage": "de-DE",
+      "isPartOf": {"@id": "https://puntotre.de/#website"}
+    },
+    {
+      "@type": "Product",
+      "name": "Puntotre OLA",
+      "brand": {"@type": "Brand", "name": "Puntotre"},
+      "description": "Badmöbel-Serie mit organischen Formen und klassischen Griffelementen. Warme Ästhetik aus Norditalien mit individueller Maßanpassung.",
+      "offers": {
+        "@type": "Offer",
+        "seller": {
+          "@type": "Organization",
+          "name": "Waschplatz-Experten",
+          "url": "https://www.waschplatz-experten.com"
+        },
+        "areaServed": ["DE", "AT", "CH"]
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="overflow-x-hidden">
 <div id="cursor"></div>
@@ -45,12 +80,20 @@
   <a href="index.html">
     <span style="font-family:'Playfair Display',serif" class="text-white text-xl tracking-[0.15em] font-light">PUNTOTRE</span>
   </a>
-  <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <a href="index.html" class="text-white/50 hover:text-white text-xs tracking-[0.1em] uppercase transition-colors">← Kollektionen</a>
+    <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener" class="wpe-hdr-link"
+       style="flex-direction:column;align-items:flex-end;line-height:1;text-decoration:none;display:none">
+      <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:2px">Powered by</span>
+      <span style="color:rgba(255,255,255,0.65);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase">Waschplatz-Experten ↗</span>
+    </a>
+  </div>
 </header>
+<style>.wpe-hdr-link:hover span:last-child{color:white!important} @media(min-width:768px){.wpe-hdr-link{display:flex!important}}</style>
 
 <!-- Hero -->
 <section class="relative h-screen overflow-hidden bg-[#0F0F0F]">
-  <img src="assets/kombis/kombis_ola-nw213b_main.webp" alt="OLA Kollektion" class="absolute inset-0 w-full h-full object-cover">
+  <img src="assets/kombis/thumb/kombis_ola-nw213b_main.webp" alt="OLA Kollektion" class="absolute inset-0 w-full h-full object-cover">
   <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);"></div>
   <div class="absolute bottom-0 left-0 pb-16 px-8 md:px-14">
     <span class="block text-xs tracking-[0.25em] uppercase mb-4" style="color:#B8976A;">Kollektion</span>
@@ -79,57 +122,84 @@
       <img src="assets/kombis/thumb/kombis_ola-nw213b_main.webp" alt="OLA" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_detail.webp">
-      <img src="assets/kombis/kombis_ola-nw213b_detail.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-nw213b_detail.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_detail-2.webp">
-      <img src="assets/kombis/kombis_ola-nw213b_detail-2.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-nw213b_detail-2.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-nw213b_detail-3.webp">
-      <img src="assets/kombis/kombis_ola-nw213b_detail-3.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-nw213b_detail-3.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-10c_main.webp">
-      <img src="assets/kombis/kombis_ola-10c_main.webp" alt="OLA" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-10c_main.webp" alt="OLA" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-10c_detail.webp">
-      <img src="assets/kombis/kombis_ola-10c_detail.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-10c_detail.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-10c_detail-2.webp">
-      <img src="assets/kombis/kombis_ola-10c_detail-2.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-10c_detail-2.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-21-15_main.webp">
-      <img src="assets/kombis/kombis_ola-21-15_main.webp" alt="OLA" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-21-15_main.webp" alt="OLA" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-21-15_detail-1.webp">
-      <img src="assets/kombis/kombis_ola-21-15_detail-1.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-21-15_detail-1.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-21-15_detail-2.webp">
-      <img src="assets/kombis/kombis_ola-21-15_detail-2.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-21-15_detail-2.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-2116_main.webp">
-      <img src="assets/kombis/kombis_ola-2116_main.webp" alt="OLA" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-2116_main.webp" alt="OLA" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-2116_detail.webp">
-      <img src="assets/kombis/kombis_ola-2116_detail.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-2116_detail.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-2116_detail-2.webp">
-      <img src="assets/kombis/kombis_ola-2116_detail-2.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-2116_detail-2.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-nw208_main.webp">
-      <img src="assets/kombis/kombis_ola-nw208_main.webp" alt="OLA" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-nw208_main.webp" alt="OLA" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-nw208_detail.webp">
-      <img src="assets/kombis/kombis_ola-nw208_detail.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-nw208_detail.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-nw208_detail-2.webp">
-      <img src="assets/kombis/kombis_ola-nw208_detail-2.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-nw208_detail-2.webp" alt="OLA Detail" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-p503b_main.webp">
-      <img src="assets/kombis/kombis_ola-p503b_main.webp" alt="OLA" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-p503b_main.webp" alt="OLA" loading="lazy">
     </a>
     <a class="gal-item" data-full="assets/kombis/kombis_ola-p503b_detail.webp">
-      <img src="assets/kombis/kombis_ola-p503b_detail.webp" alt="OLA Detail" loading="lazy">
+      <img src="assets/kombis/thumb/kombis_ola-p503b_detail.webp" alt="OLA Detail" loading="lazy">
     </a>
   </div>
+</section>
+
+
+<!-- Fakten + CTA -->
+<section style="background:#0A0A0A;padding:5rem 2rem 6rem;text-align:center">
+  <div style="display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:3rem;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:2.5rem 0">
+
+      <div style="text-align:center;padding:0 1.5rem">
+        <p style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:white">6</p>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.6rem">Höhen</p>
+      </div>
+      <div style="text-align:center;padding:0 1.5rem">
+        <p style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:white">5</p>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.6rem">Tiefen</p>
+      </div>
+      <div style="text-align:center;padding:0 1.5rem">
+        <p style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:white">~84</p>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.6rem">Oberflächen</p>
+      </div>
+  </div>
+  <p style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:2.5rem">Lackiert · Echtholz · Laminat · Metallic</p>
+  <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
+     style="display:inline-block;border:1px solid #B8976A;color:#B8976A;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.8rem;text-decoration:none;transition:background .4s,color .4s"
+     onmouseenter="this.style.background='#B8976A';this.style.color='#0A0A0A'"
+     onmouseleave="this.style.background='transparent';this.style.color='#B8976A'">
+    Jetzt bei Waschplatz-Experten planen ↗
+  </a>
 </section>
 
 <!-- Andere Kollektionen -->
@@ -215,11 +285,11 @@ lb.addEventListener('click', e => { if(e.target===lb) closeLightbox(); });
 <!-- Sticky Bottom Bar -->
 <div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:9980;background:rgba(10,10,10,0.96);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.5rem">
   <a href="tel:+4971411421690"
-     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
+     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em;white-space:nowrap">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
     </svg>
-    Anrufen
+    Anrufen (8–20 Uhr)
   </a>
   <a href="https://wa.me/4971411421690" target="_blank" rel="noopener"
      style="display:flex;align-items:center;gap:0.5rem;color:#B8976A;text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
@@ -231,12 +301,14 @@ lb.addEventListener('click', e => { if(e.target===lb) closeLightbox(); });
   <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
      style="display:flex;flex-direction:column;align-items:flex-end;text-decoration:none">
     <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.2em;text-transform:uppercase">Powered by</span>
-    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase">WPE ↗</span>
+    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase"><span class="wpe-short">WPE ↗</span><span class="wpe-long">Waschplatz-Experten ↗</span></span>
   </a>
 </div>
 <style>
   body { padding-bottom: 52px; }
   @media (min-width: 768px) { #stickyBar { padding: 0.65rem 3rem; } #stickyBar a { font-size: 0.72rem; } }
+  .wpe-long{display:none}
+  @media(min-width:768px){.wpe-short{display:none}.wpe-long{display:inline}}
 </style>
 </body>
 </html>

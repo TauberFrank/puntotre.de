@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <meta name="robots" content="noindex,follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressum — Puntotre</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -116,11 +117,11 @@
 <!-- Sticky Bottom Bar -->
 <div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:9980;background:rgba(10,10,10,0.96);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.5rem">
   <a href="tel:+4971411421690"
-     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
+     style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em;white-space:nowrap">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
     </svg>
-    Anrufen
+    Anrufen (8–20 Uhr)
   </a>
   <a href="https://wa.me/4971411421690" target="_blank" rel="noopener"
      style="display:flex;align-items:center;gap:0.5rem;color:#B8976A;text-decoration:none;font-size:0.7rem;letter-spacing:0.08em">
@@ -132,12 +133,14 @@
   <a href="https://www.waschplatz-experten.com" target="_blank" rel="noopener"
      style="display:flex;flex-direction:column;align-items:flex-end;text-decoration:none">
     <span style="color:rgba(255,255,255,0.3);font-size:7px;letter-spacing:0.2em;text-transform:uppercase">Powered by</span>
-    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase">WPE ↗</span>
+    <span style="color:rgba(255,255,255,0.6);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase"><span class="wpe-short">WPE ↗</span><span class="wpe-long">Waschplatz-Experten ↗</span></span>
   </a>
 </div>
 <style>
   body { padding-bottom: 52px; }
   @media (min-width: 768px) { #stickyBar { padding: 0.65rem 3rem; } #stickyBar a { font-size: 0.72rem; } }
+  .wpe-long{display:none}
+  @media(min-width:768px){.wpe-short{display:none}.wpe-long{display:inline}}
 </style>
 </body>
 </html>
