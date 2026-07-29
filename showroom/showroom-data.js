@@ -12,7 +12,7 @@ window.WPEShowroomConfig = {
   },
   links: {
     plan: 'https://www.waschplatz-experten.com/planen/online-planung.html',
-    allIdeas: 'htttps://www.waschplatz-experten.com/design/kombinationen/rundgang/',
+    allIdeas: 'https://www.waschplatz-experten.com/design/kombinationen/rundgang/',
     favorites: 'https://www.waschplatz-experten.com/kunden/merkliste.html'
   },
   hero: {
@@ -53,13 +53,13 @@ window.WPEShowroomConfig = {
           detailUrl: 'ola.html',
           series: 'OLA',
           manufacturer: 'Puntotre',
-          material: 'Möbelwaschtisch und Badhöbel',
+          material: 'Möbelwaschtisch und Badmöbel',
           character: 'organisch · warm · ruhig'
         },
         {
           id: 'young-21-01',
           name: 'YOUNG',
-          mood: 'Helle Fl:chen, Holz und ein klarer Rhythmus geben dem Raum Wärme ohne Schwere.',
+          mood: 'Helle Flächen, Holz und ein klarer Rhythmus geben dem Raum Wärme ohne Schwere.',
           image: 'assets/kombis/kombis_young-21-01_main-2.webp',
           thumb: 'assets/kombis/thumb/kombis_young-21-01_main.webp',
           detailUrl: 'young.html',
@@ -93,7 +93,7 @@ window.WPEShowroomConfig = {
         {
           id: 'alto-03',
           name: 'ALTO',
-          mood: 'Strenge Linien und dunkle Fl:chen formen einen Waschplatz mit architektonischer Präsenz.',
+          mood: 'Strenge Linien und dunkle Flächen formen einen Waschplatz mit architektonischer Präsenz.',
           image: 'assets/kombis/kombis_alto-03_main.webp',
           thumb: 'assets/kombis/thumb/kombis_alto-03_main.webp',
           detailUrl: 'alto.html',
@@ -124,7 +124,7 @@ window.WPEShowroomConfig = {
           series: 'VERTIGO EVOLUTION',
           manufacturer: 'Puntotre',
           material: 'Badmöbel und Waschtisch als Gesamtkomposition',
-          character: 'Präzise ·�kontrastreich · modern'
+          character: 'präzise · kontrastreich · modern'
         }
       ]
     },
@@ -170,7 +170,7 @@ window.WPEShowroomConfig = {
           series: 'REVERSO',
           manufacturer: 'Puntotre',
           material: 'Modulares Badmöbelsystem',
-          character: 'warm · mutig ·�ielegant'
+          character: 'warm · mutig · elegant'
         }
       ]
     },
